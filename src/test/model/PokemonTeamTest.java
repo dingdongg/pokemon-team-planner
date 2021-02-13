@@ -1,5 +1,6 @@
 package model;
 
+import model.types.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +24,18 @@ public class PokemonTeamTest {
         testPokemonB = new Pokemon("another pokemon");
         testPokemonC = new Pokemon("yet another pokemon");
         testPokemonD = new Pokemon("pikachu");
-        testPokemonE = new Pokemon("magikarp");
+        testPokemonE = new Pokemon("gyarados");
         testPokemonF = new Pokemon("mewtwo");
+
+        Type electric = new Type("ELECTRIC");
+        Type water = new Type("WATER");
+        Type flying = new Type("FLYING");
+        Type psychic = new Type("PSYCHIC");
+
+        testPokemonD.setFirstType(electric);
+        testPokemonE.setFirstType(water);
+        testPokemonE.setSecondType(flying);
+        testPokemonF.setFirstType(psychic);
     }
 
     @Test
@@ -129,12 +140,97 @@ public class PokemonTeamTest {
     }
 
     @Test
-    public void testGetListOfPokemon() {
-        testTeam.addPokemon(testPokemonA);
-        testTeam.addPokemon(testPokemonB);
-        testTeam.addPokemon(testPokemonC);
+    public void testChangeEditingStatus() {
 
-        assertEquals(testTeam.getListOfPokemon(), "a pokemon, another pokemon, yet another pokemon");
+        testTeam.changeEditingStatus();
+
+        assertTrue(testTeam.getEditStatus());
     }
 
+    @Test
+    public void testChangeEditingStatusMultipleTimes() {
+
+        testTeam.changeEditingStatus();
+        testTeam.changeEditingStatus();
+        testTeam.changeEditingStatus();
+        testTeam.changeEditingStatus();
+
+        assertFalse(testTeam.getEditStatus());
+    }
+
+    @Test
+    public void testGetPokemonInfoOneType() {
+        testTeam.addPokemon(testPokemonD);
+
+        String name = testPokemonD.getName();
+        String type = testPokemonD.getFirstType().getTypeName();
+
+        assertEquals(testTeam.getPokemonInfo(testPokemonD), name + " (" + type + ")");
+    }
+
+    @Test
+    public void testGetPokemonInfoTwoTypes() {
+        testTeam.addPokemon(testPokemonE);
+
+        String name = testPokemonE.getName();
+        String typeOne = testPokemonE.getFirstType().getTypeName();
+        String typeTwo = testPokemonE.getSecondType().getTypeName();
+
+        assertEquals(testTeam.getPokemonInfo(testPokemonE), name + " (" + typeOne + " " + typeTwo + ")");
+    }
+
+    @Test
+    public void testGetTeamInfoEmpty() {
+
+        assertEquals(testTeam.getTeamInfo(), "empty team");
+    }
+
+    @Test
+    public void testGetTeamInfoOnePokemon() {
+
+        Type grass = new Type("GRASS");
+        testPokemonA.setFirstType(grass);
+        testTeam.addPokemon(testPokemonA);
+
+        String name = testPokemonA.getName();
+        String type = testPokemonA.getFirstType().getTypeName();
+
+        assertEquals(testTeam.getTeamInfo(), name + " (" + type + ")");
+    }
+
+    @Test
+    public void testGetTeamInfoThreePokemon() {
+
+        testTeam.addPokemon(testPokemonD);
+        testTeam.addPokemon(testPokemonE);
+        testTeam.addPokemon(testPokemonF);
+
+        String nameD = testPokemonD.getName();
+        String nameE = testPokemonE.getName();
+        String nameF = testPokemonF.getName();
+
+        String typeD = testPokemonD.getFirstType().getTypeName();
+        String typeOneE = testPokemonE.getFirstType().getTypeName();
+        String typeTwoE = testPokemonE.getSecondType().getTypeName();
+        String typeF = testPokemonF.getFirstType().getTypeName();
+
+        assertEquals(testTeam.getTeamInfo(), nameD + " (" + typeD + "), " + nameE + " (" + typeOneE + " " + typeTwoE + "), " + nameF + " (" + typeF + ")");
+    }
+
+    @Test
+    public void testTeamSizeEmpty() {
+
+        assertEquals(testTeam.teamSize(), 0);
+    }
+
+    @Test
+    public void testTeamSizeMultiple() {
+
+        testTeam.addPokemon(testPokemonC);
+        testTeam.addPokemon(testPokemonF);
+        testTeam.addPokemon(testPokemonA);
+        testTeam.addPokemon(testPokemonB);
+
+        assertEquals(testTeam.teamSize(), 4);
+    }
 }

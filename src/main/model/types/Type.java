@@ -1,17 +1,18 @@
 package model.types;
 
-public interface Type {
+// models the types available in official pokemon games.
+// NOTE: type dynamics (e.g. strong against, weak against)
+//       have NOT been implemented as part of P1
+public class Type {
 
-    boolean isStrongOffensively(Type opposingType);
+    private String typeName;
 
-    boolean isWeakOffensively(Type opposingType);
+    public Type(String typeName) {
+        this.typeName = typeName;
+    }
 
-    boolean isNoEffectOffensively(Type opposingType);
-
-    boolean isStrongDefensively(Type opposingType);
-
-    boolean isWeakDefensively(Type opposingType);
-
-    boolean isNoEffectDefensively(Type opposingType);
-
+    // getter
+    public String getTypeName() {
+        return this.typeName;
+    }
 }

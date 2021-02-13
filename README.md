@@ -57,7 +57,16 @@ shorter, so that I will be able to actually play through the game with my pokemo
 
 ## User stories
 
+- As a user, I want to be able to create a new pokemon having a name and 1 or 2 pokemon types
 - As a user, I want to be able to design a pokemon team and add it to my collection of teams
 - As a user, I want to be able to edit existing pokemon teams
 - As a user, I want to be able to delete existing pokemon team(s)
-- As a user, I want to be able to view the contents of a selected team
+- As a user, I want to be able to view the contents of a selected team, which will list
+  the contained pokemon's names and their type(s)
+
+---
+
+#### Functions I want to implement later in the project
+
+- Giving feedback on what pokemon types a given team is offensively strong against,
+  as well as the types the team is defensively weak to 

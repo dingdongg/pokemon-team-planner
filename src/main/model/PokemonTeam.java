@@ -6,22 +6,24 @@ import java.util.ArrayList;
 public class PokemonTeam {
 
     private String teamName;
-    private ArrayList<Pokemon> pokemons;
+    private ArrayList<Pokemon> pokemonsInTeam;
+    private boolean isBeingEdited;
 
-    private static final int MAX_NUMBER_OF_POKEMON_PER_TEAM = 6;
+    public static final int MAX_NUMBER_OF_POKEMON_PER_TEAM = 6;
 
     // MODIFIES: this
     // EFFECTS: constructs a new PokemonTeam object
     public PokemonTeam(String teamName) {
         this.teamName = teamName;
-        pokemons = new ArrayList<>();
+        pokemonsInTeam = new ArrayList<>();
+        isBeingEdited = false;
     }
 
     // MODIFIES: this
     // EFFECTS: add pokemon to the end of the team
     public void addPokemon(Pokemon pokemon) {
-        if (this.pokemons.size() < MAX_NUMBER_OF_POKEMON_PER_TEAM) {
-            this.pokemons.add(pokemon);
+        if (this.pokemonsInTeam.size() < MAX_NUMBER_OF_POKEMON_PER_TEAM) {
+            this.pokemonsInTeam.add(pokemon);
         }
     }
 
@@ -30,7 +32,7 @@ public class PokemonTeam {
     // MODIFIES: this
     // EFFECTS: removes selected pokemon from the team
     public void deletePokemon(Pokemon pokemon) {
-        this.pokemons.remove(pokemon);
+        this.pokemonsInTeam.remove(pokemon);
     }
 
     // MODIFIES: this
@@ -39,10 +41,54 @@ public class PokemonTeam {
         this.teamName = newTeamName;
     }
 
+    // MODIFIES: this
+    // EFFECTS: switches the editing status of this team
+    public void changeEditingStatus() {
+        this.isBeingEdited = !this.isBeingEdited;
+    }
+
     // EFFECTS: return true if pokemon is already in the team,
     //          and false otherwise
     public boolean contains(Pokemon pokemon) {
-        return this.pokemons.contains(pokemon);
+        return this.pokemonsInTeam.contains(pokemon);
+    }
+
+    // REQUIRES: retrieving pokemon must already be in the team
+    // EFFECTS: returns a string with selected pokemon's name and type(s)
+    public String getPokemonInfo(Pokemon pokemon) {
+
+        String firstType = pokemon.getFirstType().getTypeName();
+        String secondType = pokemon.getSecondType().getTypeName();
+        String name = pokemon.getName();
+
+        if (secondType.equals("NONE")) {
+            return name + " (" + firstType + ")";
+        } else {
+            return name + " (" + firstType + " " + secondType + ")";
+        }
+    }
+
+    // EFFECTS: returns information of each pokemon stored in team.
+    //          If empty, return string that says "empty team"
+    public String getTeamInfo() {
+
+        if (this.pokemonsInTeam.isEmpty()) {
+            return "empty team";
+        }
+
+        String result = "";
+
+        for (int i = 0; i < this.pokemonsInTeam.size(); i++) {
+
+            Pokemon p = this.pokemonsInTeam.get(i);
+
+            if (i == this.pokemonsInTeam.size() - 1) {
+                result = result + getPokemonInfo(p);
+            } else {
+                result = result + getPokemonInfo(p) + ", ";
+            }
+        }
+        return result;
     }
 
     // getter
@@ -50,19 +96,30 @@ public class PokemonTeam {
         return this.teamName;
     }
 
-    // EFFECTS: return a list of pokemon names in the team as a string
-    //          separated by commas
-    public String getListOfPokemon() {
-        String result = "";
+    public boolean getEditStatus() {
+        return this.isBeingEdited;
+    }
 
-        for (int i = 0; i < this.pokemons.size(); i++) {
-            if (i == this.pokemons.size() - 1) {
-                result = result + this.pokemons.get(i).getName();
-            } else {
-                result = result + this.pokemons.get(i).getName() + ", ";
+    public int teamSize() {
+        return this.pokemonsInTeam.size();
+    }
+
+    public Pokemon getPokemon(int index) {
+        return this.pokemonsInTeam.get(index);
+    }
+
+    public Pokemon findPokemon(String name) {
+        for (int i = 0; i < teamSize(); i++) {
+            if (name.equals(getPokemon(i).getName())) {
+                return getPokemon(i);
             }
         }
+        return null;
+    }
 
-        return result;
+    // EFFECTS: return true if team has reached
+    //          maximum capacity of pokemons, and false otherwise
+    public boolean isFull() {
+        return teamSize() == MAX_NUMBER_OF_POKEMON_PER_TEAM;
     }
 }
