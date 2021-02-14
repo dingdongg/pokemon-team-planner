@@ -91,23 +91,8 @@ public class PokemonTeam {
         return result;
     }
 
-    // getter
-    public String getTeamName() {
-        return this.teamName;
-    }
-
-    public boolean getEditStatus() {
-        return this.isBeingEdited;
-    }
-
-    public int teamSize() {
-        return this.pokemonsInTeam.size();
-    }
-
-    public Pokemon getPokemon(int index) {
-        return this.pokemonsInTeam.get(index);
-    }
-
+    // EFFECTS: finds and returns pokemon with given name in this pokemon team,
+    //          otherwise return null
     public Pokemon findPokemon(String name) {
         for (int i = 0; i < teamSize(); i++) {
             if (name.equals(getPokemon(i).getName())) {
@@ -117,9 +102,29 @@ public class PokemonTeam {
         return null;
     }
 
+    // EFFECTS: returns the number of pokemons in the team
+    public int teamSize() {
+        return this.pokemonsInTeam.size();
+    }
+
     // EFFECTS: return true if team has reached
     //          maximum capacity of pokemons, and false otherwise
     public boolean isFull() {
         return teamSize() == MAX_NUMBER_OF_POKEMON_PER_TEAM;
+    }
+
+    // getters
+
+    public String getTeamName() {
+        return this.teamName;
+    }
+
+    public boolean getEditStatus() {
+        return this.isBeingEdited;
+    }
+
+    // REQUIRES: pokemon team must not be empty
+    public Pokemon getPokemon(int index) {
+        return this.pokemonsInTeam.get(index);
     }
 }

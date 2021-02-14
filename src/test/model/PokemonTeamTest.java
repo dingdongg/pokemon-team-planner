@@ -233,4 +233,90 @@ public class PokemonTeamTest {
 
         assertEquals(testTeam.teamSize(), 4);
     }
+
+    @Test
+    public void testGetPokemonOnePokemon() {
+        testTeam.addPokemon(testPokemonB);
+
+        assertEquals(testTeam.getPokemon(0), testPokemonB);
+    }
+
+    @Test
+    public void testGetPokemonMultiplePokemon() {
+        testTeam.addPokemon(testPokemonF);
+        testTeam.addPokemon(testPokemonA);
+        testTeam.addPokemon(testPokemonD);
+
+        assertEquals(testTeam.getPokemon(0), testPokemonF);
+        assertEquals(testTeam.getPokemon(1), testPokemonA);
+        assertEquals(testTeam.getPokemon(2), testPokemonD);
+    }
+
+    @Test
+    public void testFindPokemonOnePokemonFound() {
+        testTeam.addPokemon(testPokemonB);
+
+        assertEquals(testTeam.findPokemon("another pokemon"), testPokemonB);
+    }
+
+    @Test
+    public void testFindPokemonOnePokemonNotFound() {
+        testTeam.addPokemon(testPokemonB);
+
+        assertNull(testTeam.findPokemon("pikachu"));
+    }
+
+    @Test
+    public void testFindPokemonMultiplePokemonFound() {
+        testTeam.addPokemon(testPokemonA);
+        testTeam.addPokemon(testPokemonD);
+        testTeam.addPokemon(testPokemonF);
+
+        assertEquals(testTeam.findPokemon("mewtwo"), testPokemonF);
+        assertEquals(testTeam.findPokemon("a pokemon"), testPokemonA);
+        assertEquals(testTeam.findPokemon("pikachu"), testPokemonD);
+    }
+
+    @Test
+    public void testFindPokemonMultiplePokemonNotFound() {
+        testTeam.addPokemon(testPokemonA);
+        testTeam.addPokemon(testPokemonD);
+        testTeam.addPokemon(testPokemonF);
+
+        assertNull(testTeam.findPokemon("yet another pokemon"));
+    }
+
+    @Test
+    public void testIsFullEmpty() {
+        assertFalse(testTeam.isFull());
+    }
+
+    @Test
+    public void testIsFullOne() {
+        testTeam.addPokemon(testPokemonA);
+
+        assertFalse(testTeam.isFull());
+    }
+
+    @Test
+    public void testIsFullThree() {
+        testTeam.addPokemon(testPokemonA);
+        testTeam.addPokemon(testPokemonC);
+        testTeam.addPokemon(testPokemonD);
+
+        assertFalse(testTeam.isFull());
+    }
+
+    @Test
+    public void testIsFullFull() {
+        testTeam.addPokemon(testPokemonA);
+        testTeam.addPokemon(testPokemonB);
+        testTeam.addPokemon(testPokemonC);
+        testTeam.addPokemon(testPokemonD);
+        testTeam.addPokemon(testPokemonE);
+        testTeam.addPokemon(testPokemonF);
+
+        assertTrue(testTeam.isFull());
+    }
+
 }
