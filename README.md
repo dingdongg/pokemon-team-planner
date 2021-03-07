@@ -63,6 +63,10 @@ shorter, so that I will be able to actually play through the game with my pokemo
 - As a user, I want to be able to delete existing pokemon team(s)
 - As a user, I want to be able to view the contents of a selected team, which will list
   the contained pokemon's names and their type(s)
+  
+##### User stories (Phase 2)
+- As a user, I want to be able to save my collection of pokemon teams to file
+- As a user, I want to be able to load my collection of pokemon teams from file
 
 ---
 
