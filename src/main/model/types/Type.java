@@ -7,6 +7,7 @@ public class Type {
 
     private String typeName;
 
+    // EFFECTS: creates a new Type object having specified name
     public Type(String typeName) {
         this.typeName = typeName;
     }

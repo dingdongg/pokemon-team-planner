@@ -4,14 +4,22 @@ import model.Pokemon;
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
 import model.types.Type;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import javax.xml.bind.SchemaOutputResolver;
+import java.io.IOException;
 import java.util.Scanner;
 
 // The Pokemon Team Planner app
 // CODE REFERENCED: TellerApp class in the Teller project provided
+// CODE REFERENCED: JsonSerializationDemo project example
 public class PokemonTeamPlannerApp {
 
+    // first three fields were referenced from JsonSerializationDemo
+    private static final String JSON_STORE = "./data/collection.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
     private PokemonTeamCollection teamList;
     private Scanner input;
     private boolean appRunning;
@@ -21,7 +29,10 @@ public class PokemonTeamPlannerApp {
     public PokemonTeamPlannerApp() {
         teamList = new PokemonTeamCollection();
         appRunning = true;
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         input = new Scanner(System.in);
+
         startApp();
     }
 
@@ -55,11 +66,40 @@ public class PokemonTeamPlannerApp {
             deletePokemonTeam();
         } else if (command.contentEquals("r")) {
             resetCollection();
+        } else if (command.contentEquals("s")) {
+            saveCollection();
+        } else if (command.contentEquals("l")) {
+            loadCollection();
         } else if (command.contentEquals("q")) {
             closingMessage();
             appRunning = false;
         } else {
             askInputAgain();
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS : loads teamList from file
+    // CODE REFERENCED FROM: JsonSerializationDemo project
+    private void loadCollection() {
+        try {
+            teamList = jsonReader.read();
+            System.out.println("Loaded collection from " + JSON_STORE + "!");
+        } catch (IOException e) {
+            System.out.println("Oops! Something's wrong and we can't retrieve collection from " + JSON_STORE);
+        }
+    }
+
+    // EFFECTS: saves teamList to file
+    // CODE REFERENCED FROM: JsonSerializationDemo project
+    private void saveCollection() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(teamList);
+            jsonWriter.close();
+            System.out.println("Saved collection to " + JSON_STORE + "!");
+        } catch (IOException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 
@@ -175,6 +215,8 @@ public class PokemonTeamPlannerApp {
         }
     }
 
+    // MODIFIES: wantedTeam
+    // EFFECTS : edit either the name or pokemon contents of wantedTeam
     private void editContents(PokemonTeam wantedTeam) {
         String choice = input.next().toLowerCase();
 
@@ -191,6 +233,8 @@ public class PokemonTeamPlannerApp {
         }
     }
 
+    // MODIFIES: wantedTeam
+    // EFFECTS : add a new pokemon if not full, or remove/edit existing pokemons in team
     private void processEditPokemonInput(String option, PokemonTeam wantedTeam) {
         if (option.equals("a")) {
             if (wantedTeam.isFull()) {
@@ -212,6 +256,8 @@ public class PokemonTeamPlannerApp {
         }
     }
 
+    // MODIFIES: toBeEdited
+    // EFFECTS : edit either the name or types of selected pokemon
     private void editPokemon(Pokemon toBeEdited) {
         if (toBeEdited == null) {
             System.out.println("No such pokemon found!");
@@ -233,18 +279,21 @@ public class PokemonTeamPlannerApp {
         }
     }
 
+    // EFFECTS: displays editing options to the user
     private void displayPokemonEditOptions() {
         System.out.println("\tAdding a new pokemon to the team   -> a");
         System.out.println("\tEditing existing pokemons in team  -> e");
         System.out.println("\tRemoving a pokemon from the team   -> r");
     }
 
+    // EFFECTS: displays a list of names of all pokemons in wantedTeam
     private void displayListOfPokemonInTeam(PokemonTeam wantedTeam) {
         for (int i = 0; i < wantedTeam.teamSize(); i++) {
             System.out.println("\t" + wantedTeam.getPokemon(i).getName());
         }
     }
 
+    // EFFECTS: displays the possible edit/back options to user
     private void editOptions() {
         System.out.println("What would you like to edit? \n");
         System.out.println("\tname of team      -> n");
@@ -317,6 +366,8 @@ public class PokemonTeamPlannerApp {
         System.out.println("\tview an existing Pokemon team -> v");
         System.out.println("\tdelete a team from collection -> d");
         System.out.println("\treset the entire collection   -> r");
+        System.out.println("\tsave the collection           -> s");
+        System.out.println("\tload previous collection      -> l");
         System.out.println("\tclose the program             -> q");
     }
 
