@@ -1,0 +1,53 @@
+{
+    "teams": [
+      {
+          "teamName": "team with 6 pokemons",
+          "pokemonsInTeam": [
+            {
+              "pokemonName": "pikachu",
+              "firstType": "electric",
+              "secondType": "NONE"
+            },
+            {
+              "pokemonName": "mewtwo",
+              "firstType": "psychic",
+              "secondType": "NONE"
+            },
+            {
+              "pokemonName": "charizard",
+              "firstType": "fire",
+              "secondType": "flying"
+            },
+            {
+              "pokemonName": "gengar",
+              "firstType": "ghost",
+              "secondType": "poison"
+            },
+            {
+              "pokemonName": "blastoise",
+              "firstType": "water",
+              "secondType": "NONE"
+            },
+            {
+              "pokemonName": "scizor",
+              "firstType": "bug",
+              "secondType": "steel"
+            }
+          ]
+      },
+      {
+        "teamName": "team with 1 pokemon",
+        "pokemonsInTeam": [
+          {
+            "pokemonName": "snorlax",
+            "firstType": "normal",
+            "secondType": "NONE"
+          }
+        ]
+      },
+      {
+        "teamName": "team with no pokemon",
+        "pokemonsInTeam": []
+      }
+    ]
+}
