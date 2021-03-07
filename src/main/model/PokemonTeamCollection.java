@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class PokemonTeamCollection {
+public class PokemonTeamCollection implements Writable {
 
     private ArrayList<PokemonTeam> teamCollection;
 
@@ -10,8 +14,27 @@ public class PokemonTeamCollection {
     // EFFECTS: constructs a new PokemonTeamCollection object
     public PokemonTeamCollection() {
 
-        teamCollection = new ArrayList<>();
+        this.teamCollection = new ArrayList<>();
 
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("teams", collectionToJson());
+
+        return json;
+    }
+
+    // EFFECTS: returns pokemon teams in this collection as a JSON array
+    private JSONArray collectionToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (PokemonTeam team : this.teamCollection) {
+            jsonArray.put(team.toJson());
+        }
+
+        return jsonArray;
     }
 
     // MODIFIES: this

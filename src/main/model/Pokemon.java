@@ -1,9 +1,11 @@
 package model;
 
 import model.types.Type;
+import org.json.JSONObject;
+import persistence.Writable;
 
 // models a Pokemon creature
-public class Pokemon {
+public class Pokemon implements Writable {
 
     private String name;
     private Type firstType;
@@ -15,6 +17,14 @@ public class Pokemon {
         this.name = name;
         this.firstType = new Type("NONE");
         this.secondType = new Type("NONE");
+    }
+
+    // MODIFIES: this
+    // EFFECTS : constructs a new Pokemon object with given name and types
+    public Pokemon(String name, String firstType, String secondType) {
+        this.name = name;
+        this.firstType = new Type(firstType);
+        this.secondType = new Type(secondType);
     }
 
     // MODIFIES: this
@@ -51,4 +61,13 @@ public class Pokemon {
     }
 
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("pokemonName", this.name);
+        json.put("firstType", getFirstType().getTypeName());
+        json.put("secondType", getSecondType().getTypeName());
+
+        return json;
+    }
 }

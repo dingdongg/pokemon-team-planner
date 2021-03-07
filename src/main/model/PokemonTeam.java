@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // models a team of Pokemon
-public class PokemonTeam {
+public class PokemonTeam implements Writable {
 
     private String teamName;
     private ArrayList<Pokemon> pokemonsInTeam;
@@ -126,5 +130,25 @@ public class PokemonTeam {
     // REQUIRES: pokemon team must not be empty
     public Pokemon getPokemon(int index) {
         return this.pokemonsInTeam.get(index);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("teamName", this.teamName);
+        json.put("pokemonsInTeam", pokemonsToJson());
+
+        return json;
+    }
+
+    // EFFECTS: returns pokemons in this team as JSON array
+    private JSONArray pokemonsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Pokemon p : this.pokemonsInTeam) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 }

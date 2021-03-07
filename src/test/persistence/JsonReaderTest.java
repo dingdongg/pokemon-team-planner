@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 // code in this class was referenced from JsonSerializationDemo in Phase 2, Task 4 of the personal project
-public class JsonReaderTest {
+public class JsonReaderTest extends JsonTest {
 
     @Test
     public void testReaderNonExistentFile() {
@@ -51,33 +51,18 @@ public class JsonReaderTest {
             // ensures the name, size, and pokemon details of the first team is correct
             assertEquals("team with 6 pokemons", teams.get(0).getTeamName());
             assertTrue(teams.get(0).isFull());
-            assertEquals("pikachu", teams.get(0).getPokemon(0).getName());
-            assertEquals("electric", teams.get(0).getPokemon(0).getFirstType().getTypeName());
-
-            assertEquals("mewtwo", teams.get(0).getPokemon(1).getName());
-            assertEquals("psychic", teams.get(0).getPokemon(1).getFirstType().getTypeName());
-
-            assertEquals("charizard", teams.get(0).getPokemon(2).getName());
-            assertEquals("fire", teams.get(0).getPokemon(2).getFirstType().getTypeName());
-            assertEquals("flying", teams.get(0).getPokemon(2).getSecondType().getTypeName());
-
-            assertEquals("gengar", teams.get(0).getPokemon(3).getName());
-            assertEquals("ghost", teams.get(0).getPokemon(3).getFirstType().getTypeName());
-            assertEquals("poison", teams.get(0).getPokemon(3).getSecondType().getTypeName());
-
-            assertEquals("blastoise", teams.get(0).getPokemon(4).getName());
-            assertEquals("water", teams.get(0).getPokemon(4).getFirstType().getTypeName());
-
-            assertEquals("scizor", teams.get(0).getPokemon(5).getName());
-            assertEquals("bug", teams.get(0).getPokemon(5).getFirstType().getTypeName());
-            assertEquals("steel", teams.get(0).getPokemon(5).getSecondType().getTypeName());
+            checkPokemon("pikachu", "electric", "NONE", teams.get(0).getPokemon(0));
+            checkPokemon("mewtwo", "psychic", "NONE", teams.get(0).getPokemon(1));
+            checkPokemon("charizard", "fire", "flying", teams.get(0).getPokemon(2));
+            checkPokemon("gengar", "ghost", "poison", teams.get(0).getPokemon(3));
+            checkPokemon("blastoise", "water", "NONE", teams.get(0).getPokemon(4));
+            checkPokemon("scizor", "bug", "steel", teams.get(0).getPokemon(5));
 
 
             // ensures the name, size, and pokemon details of the second team is correct
             assertEquals("team with 1 pokemon", teams.get(1).getTeamName());
             assertEquals(1, teams.get(1).teamSize());
-            assertEquals("snorlax", teams.get(1).getPokemon(0).getName());
-            assertEquals("normal", teams.get(1).getPokemon(0).getFirstType().getTypeName());
+            checkPokemon("snorlax", "normal", "NONE", teams.get(1).getPokemon(0));
 
 
             // ensures the name, size, and pokemon details of the third team is correct

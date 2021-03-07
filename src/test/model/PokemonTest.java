@@ -35,6 +35,15 @@ class PokemonTest {
     }
 
     @Test
+    public void testPokemonSecondConstructor() {
+        Pokemon pokemon = new Pokemon("pikachu", "electric", "NONE");
+
+        assertEquals("pikachu", pokemon.getName());
+        assertEquals("electric", pokemon.getFirstType().getTypeName());
+        assertEquals("NONE", pokemon.getSecondType().getTypeName());
+    }
+
+    @Test
     public void testSetFirstType() {
         testPokemon.setFirstType(testTypeA);
 
