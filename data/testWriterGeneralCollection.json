@@ -1,0 +1,49 @@
+{"teams": [
+    {
+        "teamName": "an empty team",
+        "pokemonsInTeam": []
+    },
+    {
+        "teamName": "team with 1 pokemon :)",
+        "pokemonsInTeam": [{
+            "pokemonName": "magikarp",
+            "firstType": "water",
+            "secondType": "NONE"
+        }]
+    },
+    {
+        "teamName": "team with 6 pokemons",
+        "pokemonsInTeam": [
+            {
+                "pokemonName": "magikarp",
+                "firstType": "water",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "bulbasaur",
+                "firstType": "grass",
+                "secondType": "poison"
+            },
+            {
+                "pokemonName": "charmander",
+                "firstType": "fire",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "squirtle",
+                "firstType": "water",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "diglett",
+                "firstType": "ground",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "articuno",
+                "firstType": "ice",
+                "secondType": "flying"
+            }
+        ]
+    }
+]}

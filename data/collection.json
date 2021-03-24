@@ -1,0 +1,87 @@
+{"teams": [
+    {
+        "teamName": "team B",
+        "pokemonsInTeam": [
+            {
+                "pokemonName": "snorlax",
+                "firstType": "normal",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "charizard",
+                "firstType": "fire",
+                "secondType": "flying"
+            },
+            {
+                "pokemonName": "diglett",
+                "firstType": "ground",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "squirtle",
+                "firstType": "water",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "raichu",
+                "firstType": "electric",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "ditto",
+                "firstType": "normal",
+                "secondType": "NONE"
+            }
+        ]
+    },
+    {
+        "teamName": "team C",
+        "pokemonsInTeam": [
+            {
+                "pokemonName": "dragonite",
+                "firstType": "dragon",
+                "secondType": "flying"
+            },
+            {
+                "pokemonName": "zekrom",
+                "firstType": "electric",
+                "secondType": "dragon"
+            },
+            {
+                "pokemonName": "reshiram",
+                "firstType": "fire",
+                "secondType": "dragon"
+            },
+            {
+                "pokemonName": "kyurem",
+                "firstType": "ice",
+                "secondType": "dragon"
+            },
+            {
+                "pokemonName": "metagross",
+                "firstType": "steel",
+                "secondType": "psychic"
+            },
+            {
+                "pokemonName": "hydreigon",
+                "firstType": "dark",
+                "secondType": "dragon"
+            }
+        ]
+    },
+    {
+        "teamName": "team D",
+        "pokemonsInTeam": [
+            {
+                "pokemonName": "pikachu",
+                "firstType": "electric",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "charmander",
+                "firstType": "fire",
+                "secondType": "NONE"
+            }
+        ]
+    }
+]}
