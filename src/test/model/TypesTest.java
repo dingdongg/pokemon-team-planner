@@ -24,7 +24,6 @@ public class TypesTest {
         ground = Types.GROUND;
         none = Types.NONE;
         Types.initializeTypeConstants();
-
     }
 
     @Test
