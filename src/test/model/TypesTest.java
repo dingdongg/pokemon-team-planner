@@ -6,6 +6,8 @@ import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TypesTest {
@@ -23,6 +25,25 @@ public class TypesTest {
         none = Types.NONE;
         Types.initializeTypeConstants();
 
+    }
+
+    @Test
+    public void testTypesStrongAgainst() {
+        List<String> list = normal.typesStrongAgainst();
+        assertTrue(list.isEmpty());
+
+        list = ghost.typesStrongAgainst();
+        assertEquals(2, list.size());
+        assertTrue(list.contains("GHOST"));
+        assertTrue(list.contains("PSYCHIC"));
+
+        list = ground.typesStrongAgainst();
+        assertEquals(5, list.size());
+        assertTrue(list.contains("FIRE"));
+        assertTrue(list.contains("POISON"));
+        assertTrue(list.contains("STEEL"));
+        assertTrue(list.contains("ELECTRIC"));
+        assertTrue(list.contains("ROCK"));
     }
 
     @Test

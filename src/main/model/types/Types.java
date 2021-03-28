@@ -71,6 +71,11 @@ public enum Types {
         }
     }
 
+    // EFFECTS : returns the names of types this type is strong against
+    public List<String> typesStrongAgainst() {
+        return this.strongAgainst;
+    }
+
     // EFFECTS : parses input name into appropriate pokemon type. Users
     //           must input only the name and no other characters.
     //           Throws TypeNameException if the above is violated.

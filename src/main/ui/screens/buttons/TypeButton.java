@@ -1,10 +1,8 @@
-package ui.buttons;
+package ui.screens.buttons;
 
 import model.types.Types;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class TypeButton extends JButton {
 
