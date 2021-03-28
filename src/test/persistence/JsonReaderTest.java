@@ -2,6 +2,8 @@ package persistence;
 
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
+import model.types.Types;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,6 +13,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // code in this class was referenced from JsonSerializationDemo in Phase 2, Task 4 of the personal project
 public class JsonReaderTest extends JsonTest {
+
+    @BeforeEach
+    public void setUp() {
+        Types.initializeTypeConstants();
+    }
 
     @Test
     public void testReaderNonExistentFile() {
@@ -51,18 +58,18 @@ public class JsonReaderTest extends JsonTest {
             // ensures the name, size, and pokemon details of the first team is correct
             assertEquals("team with 6 pokemons", teams.get(0).getTeamName());
             assertTrue(teams.get(0).isFull());
-            checkPokemon("pikachu", "electric", "NONE", teams.get(0).getPokemon(0));
-            checkPokemon("mewtwo", "psychic", "NONE", teams.get(0).getPokemon(1));
-            checkPokemon("charizard", "fire", "flying", teams.get(0).getPokemon(2));
-            checkPokemon("gengar", "ghost", "poison", teams.get(0).getPokemon(3));
-            checkPokemon("blastoise", "water", "NONE", teams.get(0).getPokemon(4));
-            checkPokemon("scizor", "bug", "steel", teams.get(0).getPokemon(5));
+            checkPokemon("pikachu", "ELECTRIC", "NONE", teams.get(0).getPokemon(0));
+            checkPokemon("mewtwo", "PSYCHIC", "NONE", teams.get(0).getPokemon(1));
+            checkPokemon("charizard", "FIRE", "FLYING", teams.get(0).getPokemon(2));
+            checkPokemon("gengar", "GHOST", "POISON", teams.get(0).getPokemon(3));
+            checkPokemon("blastoise", "WATER", "NONE", teams.get(0).getPokemon(4));
+            checkPokemon("scizor", "BUG", "STEEL", teams.get(0).getPokemon(5));
 
 
             // ensures the name, size, and pokemon details of the second team is correct
             assertEquals("team with 1 pokemon", teams.get(1).getTeamName());
             assertEquals(1, teams.get(1).teamSize());
-            checkPokemon("snorlax", "normal", "NONE", teams.get(1).getPokemon(0));
+            checkPokemon("snorlax", "NORMAL", "NONE", teams.get(1).getPokemon(0));
 
 
             // ensures the name, size, and pokemon details of the third team is correct

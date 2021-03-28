@@ -1,6 +1,7 @@
 package model;
 
-import model.types.Type;
+import model.types.PokemonType;
+import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,7 @@ public class PokemonTeamCollectionTest {
 
     @BeforeEach
     public void setUp() {
+        Types.initializeTypeConstants();
         testCollection = new PokemonTeamCollection();
 
         testPokemonA = new Pokemon("A");
@@ -139,7 +141,7 @@ public class PokemonTeamCollectionTest {
     @Test
     public void testViewTeamOnePokemon() {
 
-        Type dragon = new Type("DRAGON");
+        PokemonType dragon = new PokemonType("DRAGON");
         testPokemonA.setFirstType(dragon);
         String name = testPokemonA.getName();
         String type = testPokemonA.getFirstType().getTypeName();
@@ -153,8 +155,8 @@ public class PokemonTeamCollectionTest {
     @Test
     public void testViewTeamMultiplePokemon() {
 
-        Type ground = new Type("GROUND");
-        Type rock = new Type("ROCK");
+        PokemonType ground = new PokemonType("GROUND");
+        PokemonType rock = new PokemonType("ROCK");
 
         testPokemonD.setFirstType(ground);
         testPokemonE.setFirstType(rock);

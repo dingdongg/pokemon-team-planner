@@ -1,6 +1,6 @@
 package model;
 
-import model.types.Type;
+import model.types.PokemonType;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -8,36 +8,36 @@ import persistence.Writable;
 public class Pokemon implements Writable {
 
     private String name;
-    private Type firstType;
-    private Type secondType;
+    private PokemonType firstType;
+    private PokemonType secondType;
 
     // MODIFIES: this
     // EFFECTS: constructs a new Pokemon object with given name
     public Pokemon(String name) {
         this.name = name;
-        this.firstType = new Type("NONE");
-        this.secondType = new Type("NONE");
+        this.firstType = new PokemonType("NONE");
+        this.secondType = new PokemonType("NONE");
     }
 
     // MODIFIES: this
     // EFFECTS : constructs a new Pokemon object with given name and types
     public Pokemon(String name, String firstType, String secondType) {
         this.name = name;
-        this.firstType = new Type(firstType);
-        this.secondType = new Type(secondType);
+        this.firstType = new PokemonType(firstType);
+        this.secondType = new PokemonType(secondType);
     }
 
     // MODIFIES: this
     // EFFECTS: assigns pokemon to the specified type
     //          as its primary type
-    public void setFirstType(Type type) {
+    public void setFirstType(PokemonType type) {
         this.firstType = type;
     }
 
     // MODIFIES: this
     // EFFECTS: assigns pokemon to the specified type
     //          as its secondary type
-    public void setSecondType(Type type) {
+    public void setSecondType(PokemonType type) {
         this.secondType = type;
     }
 
@@ -52,11 +52,11 @@ public class Pokemon implements Writable {
         return this.name;
     }
 
-    public Type getFirstType() {
+    public PokemonType getFirstType() {
         return this.firstType;
     }
 
-    public Type getSecondType() {
+    public PokemonType getSecondType() {
         return this.secondType;
     }
 

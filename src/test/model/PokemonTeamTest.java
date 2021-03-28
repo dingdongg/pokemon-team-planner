@@ -1,6 +1,7 @@
 package model;
 
-import model.types.Type;
+import model.types.PokemonType;
+import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,7 @@ public class PokemonTeamTest {
 
     @BeforeEach
     public void setUp() {
+        Types.initializeTypeConstants();
         testTeam = new PokemonTeam("Testing team");
         testPokemonA = new Pokemon("a pokemon");
         testPokemonB = new Pokemon("another pokemon");
@@ -27,10 +29,10 @@ public class PokemonTeamTest {
         testPokemonE = new Pokemon("gyarados");
         testPokemonF = new Pokemon("mewtwo");
 
-        Type electric = new Type("ELECTRIC");
-        Type water = new Type("WATER");
-        Type flying = new Type("FLYING");
-        Type psychic = new Type("PSYCHIC");
+        PokemonType electric = new PokemonType("ELECTRIC");
+        PokemonType water = new PokemonType("WATER");
+        PokemonType flying = new PokemonType("FLYING");
+        PokemonType psychic = new PokemonType("PSYCHIC");
 
         testPokemonD.setFirstType(electric);
         testPokemonE.setFirstType(water);
@@ -188,7 +190,7 @@ public class PokemonTeamTest {
     @Test
     public void testGetTeamInfoOnePokemon() {
 
-        Type grass = new Type("GRASS");
+        PokemonType grass = new PokemonType("GRASS");
         testPokemonA.setFirstType(grass);
         testTeam.addPokemon(testPokemonA);
 
@@ -317,6 +319,30 @@ public class PokemonTeamTest {
         testTeam.addPokemon(testPokemonF);
 
         assertTrue(testTeam.isFull());
+    }
+
+    @Test
+    public void testIsEmptyEmpty() {
+        assertTrue(testTeam.isEmpty());
+    }
+
+    @Test
+    public void testIsEmptyOne() {
+        testTeam.addPokemon(testPokemonA);
+        assertFalse(testTeam.isEmpty());
+    }
+
+    @Test
+    public void testIsEmptyFull() {
+        testTeam.addPokemon(testPokemonA);
+        testTeam.addPokemon(testPokemonB);
+        testTeam.addPokemon(testPokemonC);
+        testTeam.addPokemon(testPokemonD);
+        testTeam.addPokemon(testPokemonE);
+        testTeam.addPokemon(testPokemonF);
+
+        assertFalse(testTeam.isEmpty());
+
     }
 
 }

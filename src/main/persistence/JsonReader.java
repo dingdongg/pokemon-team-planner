@@ -4,7 +4,7 @@ package persistence;
 import model.Pokemon;
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
-import model.types.Type;
+import model.types.PokemonType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -88,8 +88,8 @@ public class JsonReader {
     // EFFECTS: parses a pokemon, set its types, from JSON object and adds it to team
     private void addPokemon(PokemonTeam team, JSONObject jsonObject) {
         String pokemonName = jsonObject.getString("pokemonName");
-        Type firstType = new Type(jsonObject.getString("firstType"));
-        Type secondType = new Type(jsonObject.getString("secondType"));
+        PokemonType firstType = new PokemonType(jsonObject.getString("firstType"));
+        PokemonType secondType = new PokemonType(jsonObject.getString("secondType"));
 
         Pokemon pokemon = new Pokemon(pokemonName);
         pokemon.setFirstType(firstType);

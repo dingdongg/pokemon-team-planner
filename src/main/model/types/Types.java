@@ -95,28 +95,29 @@ public enum Types {
     //           names in list typesBtoG; else, name is passed into
     //           check for list typesGtoW
     private static Types makeTypePartOne(String name) {
-        switch (name) {
-            case "BUG":
-                return BUG;
-            case "DARK":
-                return DARK;
-            case "DRAGON":
-                return DRAGON;
-            case "ELECTRIC":
-                return ELECTRIC;
-            case "FAIRY":
-                return FAIRY;
-            case "FIGHTING":
-                return FIGHTING;
-            case "FIRE":
-                return FIRE;
-            case "FLYING":
-                return FLYING;
-            case "GHOST":
-                return GHOST;
-            default:
-                return makeTypePartTwo(name);
-        }
+        return valueOf(name.toUpperCase());
+//        switch (name) {
+//            case "BUG":
+//                return BUG;
+//            case "DARK":
+//                return DARK;
+//            case "DRAGON":
+//                return DRAGON;
+//            case "ELECTRIC":
+//                return ELECTRIC;
+//            case "FAIRY":
+//                return FAIRY;
+//            case "FIGHTING":
+//                return FIGHTING;
+//            case "FIRE":
+//                return FIRE;
+//            case "FLYING":
+//                return FLYING;
+//            case "GHOST":
+//                return GHOST;
+//            default:
+//                return makeTypePartTwo(name);
+//        }
     }
 
     // EFFECTS : returns the pokemon type corresponding to one of the

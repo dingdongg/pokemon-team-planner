@@ -117,6 +117,11 @@ public class PokemonTeam implements Writable {
         return teamSize() == MAX_NUMBER_OF_POKEMON_PER_TEAM;
     }
 
+    // EFFECTS: return true if team is empty, false otherwise
+    public boolean isEmpty() {
+        return teamSize() == 0;
+    }
+
     // getters
 
     public String getTeamName() {

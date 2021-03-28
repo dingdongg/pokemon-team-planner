@@ -1,6 +1,7 @@
 package model;
 
-import model.types.Type;
+import model.types.PokemonType;
+import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,16 +10,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class PokemonTest {
 
     private Pokemon testPokemon;
-    private Type testTypeA;
-    private Type testTypeB;
-    private Type testTypeC;
+    private PokemonType testTypeA;
+    private PokemonType testTypeB;
+    private PokemonType testTypeC;
 
     @BeforeEach
     public void setUp() {
+        Types.initializeTypeConstants();
         testPokemon = new Pokemon("Test");
-        testTypeA = new Type("FIRE");
-        testTypeB = new Type("STEEL");
-        testTypeC = new Type("ICE");
+        testTypeA = new PokemonType("FIRE");
+        testTypeB = new PokemonType("STEEL");
+        testTypeC = new PokemonType("ICE");
     }
 
     @Test
@@ -39,7 +41,7 @@ class PokemonTest {
         Pokemon pokemon = new Pokemon("pikachu", "electric", "NONE");
 
         assertEquals("pikachu", pokemon.getName());
-        assertEquals("electric", pokemon.getFirstType().getTypeName());
+        assertEquals("ELECTRIC", pokemon.getFirstType().getTypeName());
         assertEquals("NONE", pokemon.getSecondType().getTypeName());
     }
 

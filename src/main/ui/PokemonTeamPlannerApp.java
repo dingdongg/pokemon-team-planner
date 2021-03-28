@@ -3,11 +3,10 @@ package ui;
 import model.Pokemon;
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
-import model.types.Type;
+import model.types.PokemonType;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -270,10 +269,10 @@ public class PokemonTeamPlannerApp {
                 toBeEdited.changeName(input.next());
             } else if (command.equals("t")) {
                 System.out.println("New primary type: ");
-                Type newType = new Type(input.next());
+                PokemonType newType = new PokemonType(input.next());
                 toBeEdited.setFirstType(newType);
                 System.out.println("New secondary type: ");
-                newType = new Type(input.next());
+                newType = new PokemonType(input.next());
                 toBeEdited.setSecondType(newType);
             }
         }
@@ -342,7 +341,7 @@ public class PokemonTeamPlannerApp {
         Pokemon pokemon = new Pokemon(input.next());
 
         System.out.println("Its primary type? ");
-        Type primaryType = new Type(input.next());
+        PokemonType primaryType = new PokemonType(input.next());
         pokemon.setFirstType(primaryType);
 
         System.out.println("Does it have a secondary type? (y/n) ");
@@ -350,7 +349,7 @@ public class PokemonTeamPlannerApp {
 
         if (option.contentEquals("y")) {
             System.out.println("What is its secondary type? ");
-            Type secondaryType = new Type(input.next());
+            PokemonType secondaryType = new PokemonType(input.next());
             pokemon.setSecondType(secondaryType);
         }
 

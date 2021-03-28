@@ -3,7 +3,9 @@ package persistence;
 import model.Pokemon;
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
-import model.types.Type;
+import model.types.PokemonType;
+import model.types.Types;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,6 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // code in this class was referenced from JsonSerializationDemo in Phase 2, Task 4 of the personal project
 public class JsonWriterTest extends JsonTest {
+
+    @BeforeEach
+    public void setUp() {
+        Types.initializeTypeConstants();
+    }
 
     @Test
     public void testWriterInvalidFile() {
@@ -53,7 +60,7 @@ public class JsonWriterTest extends JsonTest {
 
             PokemonTeam testTeamB = new PokemonTeam("team with 1 pokemon :)");
             Pokemon magikarp = new Pokemon("magikarp");
-            magikarp.setFirstType(new Type("water"));
+            magikarp.setFirstType(new PokemonType("water"));
             testTeamB.addPokemon(magikarp);
 
             PokemonTeam testTeamC = new PokemonTeam("team with 6 pokemons");
@@ -93,16 +100,16 @@ public class JsonWriterTest extends JsonTest {
 
             assertEquals("team with 1 pokemon :)", teams.get(1).getTeamName());
             assertEquals(1, teams.get(1).teamSize());
-            checkPokemon("magikarp", "water", "NONE", teams.get(1).getPokemon(0));
+            checkPokemon("magikarp", "WATER", "NONE", teams.get(1).getPokemon(0));
 
             assertEquals("team with 6 pokemons", teams.get(2).getTeamName());
             assertTrue(teams.get(2).isFull());
-            checkPokemon("magikarp", "water", "NONE", teams.get(2).getPokemon(0));
-            checkPokemon("bulbasaur", "grass", "poison", teams.get(2).getPokemon(1));
-            checkPokemon("charmander", "fire", "NONE", teams.get(2).getPokemon(2));
-            checkPokemon("squirtle", "water", "NONE", teams.get(2).getPokemon(3));
-            checkPokemon("diglett", "ground", "NONE", teams.get(2).getPokemon(4));
-            checkPokemon("articuno", "ice", "flying", teams.get(2).getPokemon(5));
+            checkPokemon("magikarp", "WATER", "NONE", teams.get(2).getPokemon(0));
+            checkPokemon("bulbasaur", "GRASS", "POISON", teams.get(2).getPokemon(1));
+            checkPokemon("charmander", "FIRE", "NONE", teams.get(2).getPokemon(2));
+            checkPokemon("squirtle", "WATER", "NONE", teams.get(2).getPokemon(3));
+            checkPokemon("diglett", "GROUND", "NONE", teams.get(2).getPokemon(4));
+            checkPokemon("articuno", "ICE", "FLYING", teams.get(2).getPokemon(5));
 
         } catch (IOException e) {
             fail("Exception shouldn't have been thrown");
