@@ -6,7 +6,7 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
-// models a team of Pokemon
+// models a team of Pokemons (up to 6 max, just like the original game franchise)
 public class PokemonTeam implements Writable {
 
     private String teamName;
@@ -123,7 +123,6 @@ public class PokemonTeam implements Writable {
     }
 
     // getters
-
     public String getTeamName() {
         return this.teamName;
     }

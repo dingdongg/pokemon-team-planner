@@ -18,6 +18,7 @@ import java.util.List;
 
 import static ui.PokemonTeamPlannerWindow.DEFAULT_FONT;
 
+// models the screen (a panel) where users can view, delete, or analyze a team in their collection
 public class ViewTeamScreen extends JPanel {
 
     private static final int WIDTH = 900;
@@ -47,6 +48,9 @@ public class ViewTeamScreen extends JPanel {
     private JButton analyzeButton;
     private JButton backButton;
 
+    // MODIFIES: this
+    // EFFECTS : initializes and brings together all subcomponents in the viewing panel
+    //           to create an instance of the view team screen
     public ViewTeamScreen(PokemonTeamPlannerWindow pokemonTeamPlannerWindow, PokemonTeamCollection collection) {
 
         this.pokemonTeamPlannerWindow = pokemonTeamPlannerWindow;
@@ -82,15 +86,21 @@ public class ViewTeamScreen extends JPanel {
         setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS : adds the master panel to the master container panel
     private void addMasterPanel() {
         masterContainer.add(masterPanel, "main");
     }
 
+    // MODIFIES: this
+    // EFFECTS : adds left and right panels into the master panel
     private void addLeftAndRightPanels() {
         masterPanel.add(leftPanel);
         masterPanel.add(rightPanel);
     }
 
+    // MODIFIES: this
+    // EFFECTS : initializes the right-hand panel in master panel
     private void configureRightPanel() {
         rightPanel = new JPanel();
         rightPanel.setPreferredSize(new Dimension(HALF_PANEL_WIDTH, HEIGHT));
@@ -98,6 +108,8 @@ public class ViewTeamScreen extends JPanel {
         rightPanel.setLayout(new FlowLayout(FlowLayout.CENTER,0, 0));
     }
 
+    // MODIFIES: this
+    // EFFECTS : initializes the left-hand panel in master panel
     private void configureLeftPanel() {
         leftPanel = new JPanel();
         leftPanel.setPreferredSize(new Dimension(HALF_PANEL_WIDTH, HEIGHT));
@@ -108,6 +120,8 @@ public class ViewTeamScreen extends JPanel {
         leftPanel.add(buttonPanel);
     }
 
+    // MODIFIES: this
+    // EFFECTS : initializes the master container, master panel, and the pokemon team collection
     private void initializeKeyStructures(PokemonTeamCollection collection) {
         masterContainer = new JPanel();
         masterContainer.setLayout(cl);
@@ -117,10 +131,17 @@ public class ViewTeamScreen extends JPanel {
         this.collection = collection;
     }
 
+    // EFFECTS : returns the master container
     public JPanel getMasterContainer() {
         return masterContainer;
     }
 
+    // MODIFIES: this
+    // EFFECTS : Four buttons are created, linked with unique commands, and added to the buttonPanel:
+    //           - view team button
+    //           - delete team button
+    //           - analyze team button
+    //           - return to main menu button
     private void configureAndLoadButtons() {
         viewButton = new JButton("View team");
         viewButton.setFont(DEFAULT_FONT);
@@ -139,6 +160,8 @@ public class ViewTeamScreen extends JPanel {
         buttonPanel.add(backButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS : sets the commands for each of the four buttons in the view team screen
     private void addButtonFunctionality() {
 
         setViewButtonCommand();
@@ -147,6 +170,9 @@ public class ViewTeamScreen extends JPanel {
         setBackButtonCommand();
     }
 
+    // MODIFIES: this
+    // EFFECTS : configures back button so users can return to the home screen;
+    //           any content in the right panel is also erased when this is clicked
     private void setBackButtonCommand() {
         backButton.addActionListener(new ActionListener() {
 
@@ -158,6 +184,9 @@ public class ViewTeamScreen extends JPanel {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS : configures delete button so users can remove teams from their collection;
+    //           collection is updated in PokemonTeamPlannerWindow class to be in sync
     private void setDeleteButtonCommand() {
         deleteButton.addActionListener(new ActionListener() {
 
@@ -175,6 +204,9 @@ public class ViewTeamScreen extends JPanel {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS : configures analyze button so users can see what types a particular
+    //           team in their collection is strong against
     private void setAnalyzeButtonCommand() {
         analyzeButton.addActionListener(new ActionListener() {
 
@@ -187,11 +219,13 @@ public class ViewTeamScreen extends JPanel {
                 displayTeamStrengths(team);
 
                 rightPanel.setBackground(RIGHT_PANEL_COLOR);
-                // TODO
             }
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS : looks through the types that team is strong against, filter out
+    //           duplicates, and adds the type images to the right panel
     private void displayTeamStrengths(PokemonTeam team) {
 
         List<Types> types = new ArrayList<>();
@@ -221,6 +255,9 @@ public class ViewTeamScreen extends JPanel {
         rightPanel.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS : returns a panel that holds the images of all types
+    //           listed in goodMatchUps
     private JPanel generateTypeSprites(List<String> goodMatchUps) {
 
         JPanel typePanel = new JPanel();
@@ -242,6 +279,12 @@ public class ViewTeamScreen extends JPanel {
         return typePanel;
     }
 
+    // MODIFIES: this
+    // EFFECTS : configures view button so users can select and see the contents of a team
+    //           in their collection. Image of pokemon is unique only if the name of the pokemon
+    //           corresponds to one of the image files in ./data/ folder. Otherwise, a default
+    //           image is used instead. This was done since there are over 600 image files,
+    //           and each file had to be renamed to the pokemon name.
     private void setViewButtonCommand() {
         viewButton.addActionListener(new ActionListener() {
 
@@ -264,6 +307,9 @@ public class ViewTeamScreen extends JPanel {
         });
     }
 
+    // EFFECTS : returns a panel consisting of all pokemon sprites (name + image + type images)
+    //           in the selected team. Throws IOException if default pokemon image cannot
+    //           be accessed, or if the filler image for the NONE type cannot be accessed.
     private JPanel generateTeamSprites(PokemonTeam team) throws IOException {
 
         JPanel returnPanel = new JPanel();
@@ -279,12 +325,15 @@ public class ViewTeamScreen extends JPanel {
         return returnPanel;
     }
 
+    // MODIFIES: returnPanel
+    // EFFECTS : adds the pokemon sprite (name + image + type images) of one pokemon
+    //           specified. Throws IOException if default pokemon image cannot
+    //           be accessed, or if the filler image for the NONE type cannot be accessed.
     private void generatePokemonSprite(Pokemon pokemon, JPanel returnPanel) throws IOException {
 
         JLabel pokemonName = new JLabel(pokemon.getName());
         String name = pokemon.getName();
 
-        Image pokemonPic;
         JLabel pokemonPicLabel;
 
         String firstType = pokemon.getFirstType().getTypeName();
@@ -309,6 +358,8 @@ public class ViewTeamScreen extends JPanel {
 
     }
 
+    // EFFECTS : returns a JLabel with the image of the pokemon attached to it.
+    //           Throws IOException if the default pokemon image cannot be accessed.
     private JLabel loadPokemonImages(String name) throws IOException {
         Image pokemonPic;
         JLabel pokemonPicLabel;
@@ -323,11 +374,17 @@ public class ViewTeamScreen extends JPanel {
         return pokemonPicLabel;
     }
 
+    // MODIFIES: returnPanel
+    // EFFECTS : loads the pokemon name and picture as part of the sprite
     private void loadNameAndPokemonPicture(JPanel returnPanel, JLabel pokemonName, JLabel pokemonPicLabel) {
         returnPanel.add(pokemonName);
         returnPanel.add(pokemonPicLabel);
     }
 
+    // MODIFIES: typePanel
+    // EFFECTS : adds an empty type image in lieu of images for pokemon
+    //           with no second type (ie. second type is NONE). Throws
+    //           IOException if empty type image cannot be accessed.
     private void handleNoneSecondTypeSprite(JPanel typePanel) throws IOException {
         Image typeImage = ImageIO.read(new File("./data/EMPTY_TYPE.png"));
         typeImage = typeImage.getScaledInstance(96, 96, Image.SCALE_SMOOTH);
@@ -335,6 +392,8 @@ public class ViewTeamScreen extends JPanel {
         typePanel.add(typePicLabel);
     }
 
+    // EFFECTS : attaches the corresponding pokemon type image to a JLabel and return it;
+    //           images are scaled to match the dimensions of the pokemon picture image file
     private JLabel getTypeSprite(String pokemonType) {
 
         JLabel typePicLabel = new JLabel();
@@ -352,11 +411,15 @@ public class ViewTeamScreen extends JPanel {
         }
     }
 
+    // EFFECTS : returns the teamName that was selected in the view teams screen
     private String updateContentsAndGetSelectedTeamName() {
         String teamName = (String) jlist.getSelectedValue();
         return teamName;
     }
 
+    // EFFECTS : finds the team in the collection with
+    //           name teamName, and returns the team if found.
+    //           Otherwise, return null.
     private PokemonTeam findTeam(String teamName) {
         for (int i = 0; i < collection.sizeCollection(); i++) {
             PokemonTeam team = collection.getTeam(i);
@@ -367,13 +430,18 @@ public class ViewTeamScreen extends JPanel {
         return null;
     }
 
-
+    // MODIFIES: this
+    // EFFECTS : update this.collection to be in sync with incoming collection;
+    //           update the contents to be loaded in the scroll-down list as well
     public void updateCollection(PokemonTeamCollection collection) {
         this.collection = collection;
 
         updateContents();
     }
 
+    // MODIFIES: this
+    // EFFECTS : after resetting the list of team names, re-load
+    //           the names of teams in the collection
     private void updateContents() {
         contents.clear();
         for (int i = 0; i < this.collection.sizeCollection(); i++) {

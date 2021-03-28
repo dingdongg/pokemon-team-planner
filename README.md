@@ -74,3 +74,12 @@ shorter, so that I will be able to actually play through the game with my pokemo
 
 - Giving feedback on what pokemon types a given team is offensively strong against,
   as well as the types the team is defensively weak to 
+  
+  
+## Credits
+
+- This project was inspired by the Pokemon franchise. Pokemon belongs to the Pokemon Company; I am not associated with The Pokemon Company. **No copyright infringement was intended**. This project wasn't and will never be used for commercial gains.
+- The pokemon type images are designed by falke2009 on DeviantArt.
+    * https://www.deviantart.com/falke2009/art/Pokemon-Type-Symbols-Downloadable-403610684
+- The pokemon portrait images are from veekun.
+    * https://veekun.com/dex/downloads

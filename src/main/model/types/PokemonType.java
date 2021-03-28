@@ -1,18 +1,14 @@
 package model.types;
 
-import model.types.exceptions.AttackNoneException;
 import model.types.exceptions.TypeNameException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 // models the types available in official pokemon games.
 // NOTE: type dynamics (e.g. strong against, weak against)
 //       have NOT been implemented as part of P1
+// EDIT: type dynamics have been implemented as part of P3.
+//       this feature is now accessible via the GUI
 public class PokemonType {
 
-//    private String typeName;
     private Types type = null;
 
     // EFFECTS: creates a new Type object having specified name
@@ -24,6 +20,7 @@ public class PokemonType {
         }
     }
 
+    // getter
     public Types getType() {
         return this.type;
     }

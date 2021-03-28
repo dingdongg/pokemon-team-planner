@@ -12,14 +12,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import static ui.PokemonTeamPlannerWindow.DEFAULT_FONT;
 import static ui.PokemonTeamPlannerWindow.FONT_SIZE;
 
+// models the screen (a panel) where you design and add your pokemon teams to your collection
 public class AddTeamScreen extends JPanel {
 
     private static final int WIDTH = 900;
@@ -34,7 +33,7 @@ public class AddTeamScreen extends JPanel {
 
     private PokemonTeamCollection collection;
     private PokemonTeam teamToAdd = new PokemonTeam("Default team");
-    private Pokemon pokemonToAdd = new Pokemon("defaulo");
+    private Pokemon pokemonToAdd = new Pokemon("default");
 
     private JPanel mainPanel;
 
@@ -57,6 +56,8 @@ public class AddTeamScreen extends JPanel {
     private List<TypeButton> typesClicked = new ArrayList<>();
 
 
+    // MODIFIES: this
+    // EFFECTS : constructs and initializes an instance of this "add new pokemon team" screen
     public AddTeamScreen(PokemonTeamPlannerWindow mainWindow, PokemonTeamCollection collection) {
         containMasterQuit = new JPanel();
         containMasterQuit.setLayout(cl);
@@ -81,10 +82,13 @@ public class AddTeamScreen extends JPanel {
         setVisible(true);
     }
 
+    // EFFECTS : returns the topmost JPanel
     public JPanel getContainer() {
         return containMasterQuit;
     }
 
+    // MODIFIES: this
+    // EFFECTS : generate text input boxes and labels in this screen
     private void configureNameOptions() {
         this.teamNameLabel = setUpNameLabel("Pokemon team name?");
         this.pokemonNameLabel = setUpNameLabel("Pokemon's name?");
@@ -92,6 +96,8 @@ public class AddTeamScreen extends JPanel {
         this.teamNamePrompt = setUpTextFields();
     }
 
+    // MODIFIES: this
+    // EFFECTS : displays instructions and a reset option in this panel
     private void configureTypeRelatedOptions() {
         typeButtonInstructions = generateInstructions();
         resetTypesButton = generateResetButton();
@@ -99,6 +105,9 @@ public class AddTeamScreen extends JPanel {
         fillWithComponents(justBelowTypeButtons);
     }
 
+    // MODIFIES: this
+    // EFFECTS : generate buttons to allow users to stop adding pokemon prematurely,
+    //           or to move on to create their next pokemon(s)
     private void configureTransitionButtons() {
         nextPokemonButton = generateTransitionButton("Create next pokemon");
         completeTeamButton = generateTransitionButton("End team creation");
@@ -110,6 +119,8 @@ public class AddTeamScreen extends JPanel {
         setCompleteButtonCommand(completeTeamButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS : adds labels, buttons, and other sub panels to the main panel for this screen
     private void loadUpMainPanel() {
         mainPanel.add(teamNameLabel);
         mainPanel.add(teamNamePrompt);
@@ -120,11 +131,18 @@ public class AddTeamScreen extends JPanel {
         mainPanel.add(transitionPanel);
     }
 
+    // MODIFIES: this
+    // EFFECTS : loads the instructions and reset types button just beneath the types buttons
     private void fillWithComponents(JPanel justBelowTypeButtons) {
         justBelowTypeButtons.add(typeButtonInstructions);
         justBelowTypeButtons.add(resetTypesButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS : sets command for the "End team creation" button;
+    //           ensures at least 1 pokemon is added to each team created,
+    //           updates the collection and returns to the main home screen
+    //           where the user is informed of the addition of this new team
     public void setCompleteButtonCommand(JButton completeTeamButton) {
         completeTeamButton.addActionListener(new ActionListener() {
 
@@ -144,12 +162,22 @@ public class AddTeamScreen extends JPanel {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS : creates a JButton and enlarges it slightly.
+    //           transitionButton will allow users to interact
+    //           with transitioning between panels
     private JButton generateTransitionButton(String s) {
-        JButton nextPokemonButton = new JButton(s);
-        nextPokemonButton.setFont(DEFAULT_FONT);
-        return nextPokemonButton;
+        JButton transitionButton = new JButton(s);
+        transitionButton.setFont(DEFAULT_FONT);
+        return transitionButton;
     }
 
+    // MODIFIES: this
+    // EFFECTS : sets command for the "Create next pokemon" button;
+    //           adds the pokemon with selected types and given name into the team to be added.
+    //           Once a team nears full team capacity, adds the very last pokemon to the team,
+    //           adds the team to the collection to update it, and returns to the home screen
+    //           where the user is informed that their new team has been added to the collection
     private void setNextButtonCommand(JTextField pokemonNamePrompt, JButton nextPokemonButton) {
         nextPokemonButton.addActionListener(new ActionListener() {
 
@@ -173,6 +201,9 @@ public class AddTeamScreen extends JPanel {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS : Creates and adds the pokemon with specified names and types by the
+    //           user into the new team to be added to the collection
     private void createAndAddPokemon(JTextField pokemonNamePrompt) {
         String name = pokemonNamePrompt.getText();
         PokemonType firstType = new PokemonType(typesClicked.get(0).getText());
@@ -186,6 +217,9 @@ public class AddTeamScreen extends JPanel {
         teamToAdd.addPokemon(pokemonToAdd);
     }
 
+    // MODIFIES: this
+    // EFFECTS : handles the case where the user wants the pokemon to
+    //           only have one type (second type is NONE)
     private void handleSecondType() {
         try {
             PokemonType secondType = new PokemonType(typesClicked.get(1).getText());
@@ -195,6 +229,11 @@ public class AddTeamScreen extends JPanel {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS : ensures that the user clicks 1 or 2 type buttons ONLY
+    //           before clicking on a panel transition button. Message
+    //           dialogs are thrown for invalid type button choices and returns
+    //           false (otherwise return true)
     public boolean hasValidTypeSelections() {
         int counter = 0;
         for (TypeButton t : allTypeButtons) {
@@ -213,6 +252,9 @@ public class AddTeamScreen extends JPanel {
         return true;
     }
 
+    // MODIFIES: this
+    // EFFECTS : configures the master panel which will be displayed when
+    //           user clicks the "add team" button from the home screen
     private void configureNewTeamPanel(JPanel firstPageMainPanel) {
         masterPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 0));
         masterPanel.setSize(new Dimension(400, HEIGHT));
@@ -220,6 +262,8 @@ public class AddTeamScreen extends JPanel {
         masterPanel.add(firstPageMainPanel, "main");
     }
 
+    // MODIFIES: this
+    // EFFECTS : generates a panel that will group the transition buttons into one
     private JPanel generateNextOrSavePanel() {
         JPanel nextOrSavePanel = new JPanel();
         nextOrSavePanel.setPreferredSize(new Dimension(350, 105));
@@ -227,6 +271,9 @@ public class AddTeamScreen extends JPanel {
         return nextOrSavePanel;
     }
 
+    // MODIFIES: this
+    // EFFECTS : generates a panel that will group the instruction and reset buttons into one
+    //           and returns it
     private JPanel makePanelForInstructionsAndReset() {
         JPanel justBelowTypeButtons = new JPanel();
         justBelowTypeButtons.setPreferredSize(new Dimension(WIDTH / 3, 120));
@@ -234,6 +281,9 @@ public class AddTeamScreen extends JPanel {
         return justBelowTypeButtons;
     }
 
+    // MODIFIES: this
+    // EFFECTS : generates the reset button and enlarges it slightly, and returns it.
+    //           Also give it a command to deselect all clicked type buttons.
     private JButton generateResetButton() {
         JButton resetTypesButton = new JButton("Reset types");
         resetTypesButton.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 2));
@@ -249,6 +299,9 @@ public class AddTeamScreen extends JPanel {
         return resetTypesButton;
     }
 
+    // MODIFIES: this
+    // EFFECTS : un-clicks all type buttons that have been clicked so far
+    //           and reset to default font
     private void deselectTypeButtons() {
         for (TypeButton t : allTypeButtons) {
             if (t.isClicked()) {
@@ -258,6 +311,8 @@ public class AddTeamScreen extends JPanel {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS : generates the instructions label and enlarges it slightly and returns it
     private JLabel generateInstructions() {
         JLabel instructions = new JLabel("Please select 1 or 2 types");
         instructions.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 2));
@@ -265,6 +320,9 @@ public class AddTeamScreen extends JPanel {
         return instructions;
     }
 
+    // MODIFIES: this
+    // EFFECTS : generates the panel in which all type buttons will be grouped together and returns it;
+    //           also calls initializeTypeButtons() to configure the type buttons
     private JPanel generateTypeButtonPanel() {
         JPanel panelForTypeButtons = new JPanel();
         panelForTypeButtons.setPreferredSize(new Dimension(370, HEIGHT / 3));
@@ -275,8 +333,10 @@ public class AddTeamScreen extends JPanel {
         return panelForTypeButtons;
     }
 
+    // MODIFIES: this
+    // EFFECTS : creates and configures a new button for each pokemon type, excluding NONE.
+    //           buttons are added to the allTypeButtons list afterwards
     private void initializeTypeButtons(JPanel typeButtons) {
-
         Types[] types = Types.values();
 
         for (Types t : types) {
@@ -289,6 +349,11 @@ public class AddTeamScreen extends JPanel {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS : button is configured in terms of its color, size,
+    //           and command (where the button text is bolded when clicked
+    //           and un-bolded when clicked again), as well as being
+    //           added to/removed from the selected type buttons accordingly.
     private TypeButton configureButton(Types t) {
         Color buttonColor = getCorrespondingColor(t);
         TypeButton button = new TypeButton(t);
@@ -314,6 +379,8 @@ public class AddTeamScreen extends JPanel {
         return button;
     }
 
+    // EFFECTS : returns true if black text with the button color
+    //           is difficult to read with the naked eye
     private boolean hardToRead(Types t) {
         switch (t) {
             case FIRE:
@@ -328,6 +395,8 @@ public class AddTeamScreen extends JPanel {
         }
     }
 
+    // EFFECTS : returns the representative color for
+    //           each pokemon type available (excluding NONE)
     private Color getCorrespondingColor(Types t) {
 
         switch (t) {
@@ -354,6 +423,10 @@ public class AddTeamScreen extends JPanel {
         }
     }
 
+    // EFFECTS : returns the representative color for
+    //           each pokemon type available (excluding NONE);
+    //           getColorPartTwo was implemented to adhere
+    //           to the 25-line maximum checkstyle rule
     private Color getColorPartTwo(Types t) {
         switch (t) {
             case GRASS:
@@ -377,62 +450,27 @@ public class AddTeamScreen extends JPanel {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS : returns a text field that the user can type into;
+    //           enlarges the text written into the field to see it better
     private JTextField setUpTextFields() {
         JTextField pokemonNamePrompt = new JTextField(10);
         pokemonNamePrompt.setFont(DEFAULT_FONT);
         return pokemonNamePrompt;
     }
 
+    // MODIFIES: this
+    // EFFECTS : returns a label that will detail what the user should
+    //           type into the respective text field
     private JLabel setUpNameLabel(String s) {
         JLabel teamNameLabel = new JLabel(s);
         teamNameLabel.setFont(DEFAULT_FONT);
         return teamNameLabel;
     }
 
-    private void setPokemonNameViaEnter(JLabel pokemonNameLabel, JTextField pokemonNamePrompt) {
-        pokemonNamePrompt.addKeyListener(new KeyListener() {
-
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    pokemonToAdd.changeName(this.toString());
-                    pokemonNameLabel.setText("Pokemon name: " + pokemonNamePrompt.getText());
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
-    }
-
-    private void setTeamNameViaEnter(JLabel teamNameLabel, JTextField teamNamePrompt) {
-        teamNamePrompt.addKeyListener(new KeyListener() {
-
-            @Override
-            public void keyTyped(KeyEvent e) {
-                keyPressed(e);
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    teamToAdd.changeTeamName(this.toString());
-                    teamNameLabel.setText("Team name: " + teamNamePrompt.getText());
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        });
-    }
-
+    // MODIFIES: this
+    // EFFECTS : generates and returns the main panel to be added to the master panel
+    //           that will house the text fields, labels, type buttons, and transition buttons
     private JPanel generateMainPanel() {
         JPanel firstPageMainPanel = new JPanel();
         firstPageMainPanel.setPreferredSize(new Dimension(WIDTH / 2, HEIGHT));
@@ -440,16 +478,22 @@ public class AddTeamScreen extends JPanel {
         return firstPageMainPanel;
     }
 
+    // MODIFIES: this
+    // EFFECTS : clears the pokemon name text field, un-clicks all clicked type buttons
+    //           and clears the history of clicked buttons
     private void resetPage() {
         pokemonNamePrompt.setText("");
         deselectTypeButtons();
         typesClicked.clear();
     }
 
+    // EFFECTS : prompts a message dialog that ensures users add at least 1 pokemon to each team they make
     private void displayEmptyErrorMessage() {
         JOptionPane.showMessageDialog(this, "A team must have at least 1 pokemon.");
     }
 
+    // EFFECTS : updates this.collection with incoming collection to be in sync
+    //           with the other panel/frame classes
     public void updateCollection(PokemonTeamCollection collection) {
         this.collection = collection;
     }

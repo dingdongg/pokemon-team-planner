@@ -101,55 +101,6 @@ public enum Types {
     //           check for list typesGtoW
     private static Types makeTypePartOne(String name) {
         return valueOf(name.toUpperCase());
-//        switch (name) {
-//            case "BUG":
-//                return BUG;
-//            case "DARK":
-//                return DARK;
-//            case "DRAGON":
-//                return DRAGON;
-//            case "ELECTRIC":
-//                return ELECTRIC;
-//            case "FAIRY":
-//                return FAIRY;
-//            case "FIGHTING":
-//                return FIGHTING;
-//            case "FIRE":
-//                return FIRE;
-//            case "FLYING":
-//                return FLYING;
-//            case "GHOST":
-//                return GHOST;
-//            default:
-//                return makeTypePartTwo(name);
-//        }
-    }
-
-    // EFFECTS : returns the pokemon type corresponding to one of the
-    //           names in list typesGtoW;
-    private static Types makeTypePartTwo(String name) {
-        switch (name) {
-            case "GRASS":
-                return GRASS;
-            case "GROUND":
-                return GROUND;
-            case "ICE":
-                return ICE;
-            case "NONE":
-                return NONE;
-            case "NORMAL":
-                return NORMAL;
-            case "POISON":
-                return POISON;
-            case "PSYCHIC":
-                return PSYCHIC;
-            case "ROCK":
-                return ROCK;
-            case "STEEL":
-                return STEEL;
-            default:
-                return WATER;
-        }
     }
 
 
