@@ -28,6 +28,28 @@ public class TypesTest {
     }
 
     @Test
+    public void testInitializeTypeConstants() {
+        assertEquals(9, none.getTypesBtoG().size());
+        assertEquals(10,none.getTypesGtoW().size());
+
+        assertEquals(9, ground.getTypesBtoG().size());
+        assertEquals(10, ground.getTypesGtoW().size());
+    }
+
+    @Test
+    public void testInitializeTypeConstantsMultipleTimes() {
+        Types.initializeTypeConstants();
+        Types.initializeTypeConstants();
+        Types.initializeTypeConstants();
+
+        assertEquals(9, none.getTypesBtoG().size());
+        assertEquals(10,none.getTypesGtoW().size());
+
+        assertEquals(9, ground.getTypesBtoG().size());
+        assertEquals(10, ground.getTypesGtoW().size());
+    }
+
+    @Test
     public void testTypesStrongAgainst() {
         List<String> list = normal.typesStrongAgainst();
         assertTrue(list.isEmpty());

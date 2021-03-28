@@ -71,6 +71,16 @@ public enum Types {
         }
     }
 
+    // EFFECTS : returns a list with names of all pokemon types from Bug to Ghost
+    public List<String> getTypesBtoG() {
+        return typesBtoG;
+    }
+
+    // EFFECTS : returns a list with names of all pokemon names from Grass to Water
+    public List<String> getTypesGtoW() {
+        return typesGtoW;
+    }
+
     // EFFECTS : returns the names of types this type is strong against
     public List<String> typesStrongAgainst() {
         return this.strongAgainst;
