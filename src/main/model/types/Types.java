@@ -48,16 +48,6 @@ public enum Types {
     //           into one of the two fields alphabetically
     public static void initializeTypeConstants() {
         if (typesBtoG.isEmpty() && typesGtoW.isEmpty()) {
-            typesBtoG.add("BUG");
-            typesBtoG.add("DARK");
-            typesBtoG.add("DRAGON");
-            typesBtoG.add("ELECTRIC");
-            typesBtoG.add("FAIRY");
-            typesBtoG.add("FIGHTING");
-            typesBtoG.add("FIRE");
-            typesBtoG.add("FLYING");
-            typesBtoG.add("GHOST");
-
             typesGtoW.add("GRASS");
             typesGtoW.add("GROUND");
             typesGtoW.add("ICE");
@@ -68,8 +58,42 @@ public enum Types {
             typesGtoW.add("ROCK");
             typesGtoW.add("STEEL");
             typesGtoW.add("WATER");
+            typesBtoG.add("BUG");
+            typesBtoG.add("DARK");
+            typesBtoG.add("DRAGON");
+            typesBtoG.add("ELECTRIC");
+            typesBtoG.add("FAIRY");
+            typesBtoG.add("FIGHTING");
+            typesBtoG.add("FIRE");
+            typesBtoG.add("FLYING");
+            typesBtoG.add("GHOST");
         }
     }
+
+//    private static void loadTypesGtoW() {
+//        typesGtoW.add("GRASS");
+//        typesGtoW.add("GROUND");
+//        typesGtoW.add("ICE");
+//        typesGtoW.add("NONE");
+//        typesGtoW.add("NORMAL");
+//        typesGtoW.add("POISON");
+//        typesGtoW.add("PSYCHIC");
+//        typesGtoW.add("ROCK");
+//        typesGtoW.add("STEEL");
+//        typesGtoW.add("WATER");
+//    }
+//
+//    public static void loadTypesBtoG() {
+//        typesBtoG.add("BUG");
+//        typesBtoG.add("DARK");
+//        typesBtoG.add("DRAGON");
+//        typesBtoG.add("ELECTRIC");
+//        typesBtoG.add("FAIRY");
+//        typesBtoG.add("FIGHTING");
+//        typesBtoG.add("FIRE");
+//        typesBtoG.add("FLYING");
+//        typesBtoG.add("GHOST");
+//    }
 
     // EFFECTS : returns a list with names of all pokemon types from Bug to Ghost
     public List<String> getTypesBtoG() {

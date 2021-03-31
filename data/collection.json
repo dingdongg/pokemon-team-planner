@@ -101,5 +101,40 @@
                 "secondType": "GROUND"
             }
         ]
+    },
+    {
+        "teamName": "CYNTHIA'S TEAM",
+        "pokemonsInTeam": [
+            {
+                "pokemonName": "spiritomb",
+                "firstType": "GHOST",
+                "secondType": "DARK"
+            },
+            {
+                "pokemonName": "milotic",
+                "firstType": "WATER",
+                "secondType": "NONE"
+            },
+            {
+                "pokemonName": "togekiss",
+                "firstType": "FAIRY",
+                "secondType": "FLYING"
+            },
+            {
+                "pokemonName": "lucario",
+                "firstType": "FIGHTING",
+                "secondType": "STEEL"
+            },
+            {
+                "pokemonName": "roserade",
+                "firstType": "GRASS",
+                "secondType": "POISON"
+            },
+            {
+                "pokemonName": "garchomp",
+                "firstType": "GROUND",
+                "secondType": "DRAGON"
+            }
+        ]
     }
 ]}
