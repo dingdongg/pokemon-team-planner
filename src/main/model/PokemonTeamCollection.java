@@ -7,7 +7,7 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
-// models an arbitary-sized collection of pokemon teams
+// models an arbitrary-sized collection of pokemon teams
 public class PokemonTeamCollection implements Writable {
 
     private ArrayList<PokemonTeam> teamCollection;

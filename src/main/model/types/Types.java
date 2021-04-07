@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// represents the 18 pokemon types in existence
+// represents the 18 pokemon types in existence.
+// List of strings associated with each type are
+// the names of the types that corresponding
+// type is offensively strong against.
 public enum Types {
 
     FIRE(new ArrayList<>(Arrays.asList("GRASS", "ICE", "BUG", "STEEL"))),

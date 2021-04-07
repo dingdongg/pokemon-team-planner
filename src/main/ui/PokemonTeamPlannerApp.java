@@ -11,7 +11,7 @@ import persistence.JsonWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-// The Pokemon Team Planner app
+// The Pokemon Team Planner app (user interface)
 // CODE REFERENCED: TellerApp class in the Teller project provided
 // CODE REFERENCED: JsonSerializationDemo project example
 public class PokemonTeamPlannerApp {
