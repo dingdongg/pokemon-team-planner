@@ -71,7 +71,7 @@ shorter, so that I will be able to actually play through the game with my pokemo
 ##### Phase 4: Task 2
 - I chose to implement the option where I test and design a class in my model package
 - The class I chose was PokemonTeamCollection, and the robust method is called `getTeam()`, 
-which has the ability to throw `TeamNotFoundException`, a checked exception.
+which has the ability to throw `TeamNotFoundException`, a checked exception. 
 
 ---
 
