@@ -297,7 +297,7 @@ public class ViewTeamScreen extends JPanel {
                     String teamName = updateContentsAndGetSelectedTeamName();
                     PokemonTeam team = findTeam(teamName);
                     JPanel sprites = generateTeamSprites(team);
-                    sprites.setLayout(new FlowLayout(FlowLayout.CENTER, 26, 10));
+                    sprites.setLayout(new FlowLayout(FlowLayout.CENTER, 27, 20));
                     rightPanel.add(sprites);
                     rightPanel.updateUI();
                 } catch (IOException ioe) {
