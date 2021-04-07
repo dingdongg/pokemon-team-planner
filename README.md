@@ -73,6 +73,13 @@ shorter, so that I will be able to actually play through the game with my pokemo
 - The class I chose was PokemonTeamCollection, and the robust method is called `getTeam()`, 
 which has the ability to throw `TeamNotFoundException`, a checked exception. 
 
+##### Phase 4: Task 3
+**Refactoring I would perform if I had more time:**
+- have one single `PokemonTeamCollection` field in my `PokemonTeamPlannerWindow` class instead
+of having one field each for `AddTeamScreen`, `ViewTeamScreen`, and `PokemonTeamPlannerWindow`.
+- This would reduce the coupling/dependency of the GUI components on `PokemonTeamCollection`, since
+there seems to be lots of arrows directed towards `PokemonTeamCollection`.
+
 ---
 
 #### Functions I want to implement later in the project
