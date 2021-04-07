@@ -1,7 +1,7 @@
 package model;
 
-import model.types.exceptions.AttackNoneException;
-import model.types.exceptions.TypeNameException;
+import model.exceptions.AttackNoneException;
+import model.exceptions.TypeNameException;
 import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

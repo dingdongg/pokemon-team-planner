@@ -1,5 +1,6 @@
 package model;
 
+import model.exceptions.TeamNotFoundException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -81,9 +82,13 @@ public class PokemonTeamCollection implements Writable {
         return this.teamCollection.size();
     }
 
-    // REQUIRES: teamCollection is not empty
-    // EFFECTS: returns the pokemon team stored at specified index
-    public PokemonTeam getTeam(int i) {
-        return this.teamCollection.get(i);
+    // EFFECTS: returns the pokemon team stored at specified index.
+    //          Throws TeamNotFoundException if the collection of teams is empty.
+    public PokemonTeam getTeam(int i) throws TeamNotFoundException {
+        if (this.teamCollection.isEmpty()) {
+            throw new TeamNotFoundException();
+        } else {
+            return this.teamCollection.get(i);
+        }
     }
 }

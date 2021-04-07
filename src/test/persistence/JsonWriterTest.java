@@ -3,6 +3,7 @@ package persistence;
 import model.Pokemon;
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
+import model.exceptions.TeamNotFoundException;
 import model.types.PokemonType;
 import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
@@ -91,10 +92,13 @@ public class JsonWriterTest extends JsonTest {
             assertEquals(3, collection.sizeCollection());
             ArrayList<PokemonTeam> teams = new ArrayList<>();
 
-            for (int i = 0; i < collection.sizeCollection(); i++) {
-                teams.add(collection.getTeam(i));
+            try {
+                for (int i = 0; i < collection.sizeCollection(); i++) {
+                    teams.add(collection.getTeam(i));
+                }
+            } catch (TeamNotFoundException e) {
+                fail("Unexpected TeamNotFoundException");
             }
-
             assertEquals("an empty team", teams.get(0).getTeamName());
             assertEquals(0, teams.get(0).teamSize());
 

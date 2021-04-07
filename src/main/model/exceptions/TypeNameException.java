@@ -1,4 +1,4 @@
-package model.types.exceptions;
+package model.exceptions;
 
 public class TypeNameException extends Throwable {
 }

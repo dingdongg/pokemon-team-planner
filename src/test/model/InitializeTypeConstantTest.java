@@ -4,8 +4,7 @@ import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InitializeTypeConstantTest {
 
@@ -35,4 +34,24 @@ public class InitializeTypeConstantTest {
         assertEquals(9, fire.getTypesBtoG().size());
         assertEquals(10, fire.getTypesGtoW().size());
     }
+
+//    @Test
+//    public void testInitializeTypeConstantsBugToGhostFilled() {
+//
+////        Types.loadTypesBtoG();
+//
+//        assertFalse(ground.getTypesBtoG().isEmpty());
+//        assertFalse(ghost.getTypesBtoG().isEmpty());
+//        assertFalse(fire.getTypesBtoG().isEmpty());
+//        assertFalse(none.getTypesBtoG().isEmpty());
+//        assertTrue(ground.getTypesGtoW().isEmpty());
+//        assertTrue(ghost.getTypesGtoW().isEmpty());
+//        assertTrue(fire.getTypesGtoW().isEmpty());
+//        assertTrue(none.getTypesGtoW().isEmpty());
+//
+//        Types.initializeTypeConstants();
+//
+//        assertEquals(9, fire.getTypesBtoG().size());
+//        assertEquals(10, fire.getTypesGtoW().size());
+//    }
 }

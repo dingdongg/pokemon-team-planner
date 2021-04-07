@@ -256,7 +256,7 @@ public class PokemonTeamPlannerWindow extends JFrame {
         this.collection = collection;
     }
 
-    // EFFECTS : returns the JLabel subjeading
+    // EFFECTS : returns the JLabel subheading
     public JLabel getSubheading() {
         return this.subheading;
     }

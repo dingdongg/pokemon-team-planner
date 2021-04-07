@@ -3,6 +3,7 @@ package ui.screens;
 import model.Pokemon;
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
+import model.exceptions.TeamNotFoundException;
 import model.types.Types;
 import ui.PokemonTeamPlannerWindow;
 
@@ -296,7 +297,7 @@ public class ViewTeamScreen extends JPanel {
                     String teamName = updateContentsAndGetSelectedTeamName();
                     PokemonTeam team = findTeam(teamName);
                     JPanel sprites = generateTeamSprites(team);
-                    sprites.setLayout(new FlowLayout(FlowLayout.CENTER, 27, 20));
+                    sprites.setLayout(new FlowLayout(FlowLayout.CENTER, 26, 10));
                     rightPanel.add(sprites);
                     rightPanel.updateUI();
                 } catch (IOException ioe) {
@@ -419,12 +420,18 @@ public class ViewTeamScreen extends JPanel {
 
     // EFFECTS : finds the team in the collection with
     //           name teamName, and returns the team if found.
-    //           Otherwise, return null.
+    //           Otherwise, return null, possibly accompanied
+    //           by an error message if TeamNotFoundException was caught.
     private PokemonTeam findTeam(String teamName) {
         for (int i = 0; i < collection.sizeCollection(); i++) {
-            PokemonTeam team = collection.getTeam(i);
-            if (team.getTeamName().equals(teamName)) {
-                return team;
+            try {
+                PokemonTeam team = collection.getTeam(i);
+                if (team.getTeamName().equals(teamName)) {
+                    return team;
+                }
+            } catch (TeamNotFoundException e) {
+                System.out.println("Unexpected TeamNotFoundException from findTeam().");
+                break;
             }
         }
         return null;
@@ -441,12 +448,17 @@ public class ViewTeamScreen extends JPanel {
 
     // MODIFIES: this
     // EFFECTS : after resetting the list of team names, re-load
-    //           the names of teams in the collection
+    //           the names of teams in the collection. Prints
+    //           an error message if TeamNotFoundException was caught.
     private void updateContents() {
         contents.clear();
-        for (int i = 0; i < this.collection.sizeCollection(); i++) {
-            PokemonTeam team = collection.getTeam(i);
-            contents.addElement(team.getTeamName());
+        try {
+            for (int i = 0; i < this.collection.sizeCollection(); i++) {
+                PokemonTeam team = collection.getTeam(i);
+                contents.addElement(team.getTeamName());
+            }
+        } catch (TeamNotFoundException e) {
+            System.out.println("Unexpected TeamNotFoundException from updateContents().");
         }
     }
 }

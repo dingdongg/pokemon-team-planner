@@ -1,105 +1,105 @@
 {"teams": [
-    {
-        "teamName": "test team",
-        "pokemonsInTeam": [
-            {
-                "pokemonName": "gengar",
-                "firstType": "GHOST",
-                "secondType": "POISON"
-            },
-            {
-                "pokemonName": "weavile",
-                "firstType": "DARK",
-                "secondType": "ICE"
-            },
-            {
-                "pokemonName": "gardevoir",
-                "firstType": "PSYCHIC",
-                "secondType": "FAIRY"
-            },
-            {
-                "pokemonName": "torterra",
-                "firstType": "GRASS",
-                "secondType": "GROUND"
-            },
-            {
-                "pokemonName": "regirock",
-                "firstType": "ROCK",
-                "secondType": "NONE"
-            }
-        ]
-    },
-    {
-        "teamName": "another team",
-        "pokemonsInTeam": [{
-            "pokemonName": "torchic",
-            "firstType": "FIRE",
-            "secondType": "NONE"
-        }]
-    },
-    {
-        "teamName": "singl team",
-        "pokemonsInTeam": [
-            {
-                "pokemonName": "muk",
-                "firstType": "FIRE",
-                "secondType": "NONE"
-            },
-            {
-                "pokemonName": "ada",
-                "firstType": "WATER",
-                "secondType": "NONE"
-            },
-            {
-                "pokemonName": "dgn",
-                "firstType": "GRASS",
-                "secondType": "NONE"
-            },
-            {
-                "pokemonName": "sx",
-                "firstType": "PSYCHIC",
-                "secondType": "NONE"
-            },
-            {
-                "pokemonName": "qwd",
-                "firstType": "GHOST",
-                "secondType": "NONE"
-            }
-        ]
-    },
-    {
-        "teamName": "final test",
-        "pokemonsInTeam": [
-            {
-                "pokemonName": "giratina",
-                "firstType": "GHOST",
-                "secondType": "DRAGON"
-            },
-            {
-                "pokemonName": "regirock",
-                "firstType": "ROCK",
-                "secondType": "NONE"
-            },
-            {
-                "pokemonName": "pikachu",
-                "firstType": "ELECTRIC",
-                "secondType": "NONE"
-            },
-            {
-                "pokemonName": "gengar",
-                "firstType": "GHOST",
-                "secondType": "POISON"
-            },
-            {
-                "pokemonName": "mudkip",
-                "firstType": "WATER",
-                "secondType": "NONE"
-            },
-            {
-                "pokemonName": "torterra",
-                "firstType": "GRASS",
-                "secondType": "GROUND"
-            }
-        ]
-    }
+  {
+    "teamName": "test team",
+    "pokemonsInTeam": [
+      {
+        "pokemonName": "gengar",
+        "firstType": "GHOST",
+        "secondType": "POISON"
+      },
+      {
+        "pokemonName": "weavile",
+        "firstType": "DARK",
+        "secondType": "ICE"
+      },
+      {
+        "pokemonName": "gardevoir",
+        "firstType": "PSYCHIC",
+        "secondType": "FAIRY"
+      },
+      {
+        "pokemonName": "torterra",
+        "firstType": "GRASS",
+        "secondType": "GROUND"
+      },
+      {
+        "pokemonName": "regirock",
+        "firstType": "ROCK",
+        "secondType": "NONE"
+      }
+    ]
+  },
+  {
+    "teamName": "another team",
+    "pokemonsInTeam": [{
+      "pokemonName": "torchic",
+      "firstType": "FIRE",
+      "secondType": "NONE"
+    }]
+  },
+  {
+    "teamName": "singl team",
+    "pokemonsInTeam": [
+      {
+        "pokemonName": "muk",
+        "firstType": "FIRE",
+        "secondType": "NONE"
+      },
+      {
+        "pokemonName": "ada",
+        "firstType": "WATER",
+        "secondType": "NONE"
+      },
+      {
+        "pokemonName": "dgn",
+        "firstType": "GRASS",
+        "secondType": "NONE"
+      },
+      {
+        "pokemonName": "sx",
+        "firstType": "PSYCHIC",
+        "secondType": "NONE"
+      },
+      {
+        "pokemonName": "qwd",
+        "firstType": "GHOST",
+        "secondType": "NONE"
+      }
+    ]
+  },
+  {
+    "teamName": "final test",
+    "pokemonsInTeam": [
+      {
+        "pokemonName": "giratina",
+        "firstType": "GHOST",
+        "secondType": "DRAGON"
+      },
+      {
+        "pokemonName": "regirock",
+        "firstType": "ROCK",
+        "secondType": "NONE"
+      },
+      {
+        "pokemonName": "pikachu",
+        "firstType": "ELECTRIC",
+        "secondType": "NONE"
+      },
+      {
+        "pokemonName": "gengar",
+        "firstType": "GHOST",
+        "secondType": "POISON"
+      },
+      {
+        "pokemonName": "mudkip",
+        "firstType": "WATER",
+        "secondType": "NONE"
+      },
+      {
+        "pokemonName": "torterra",
+        "firstType": "GRASS",
+        "secondType": "GROUND"
+      }
+    ]
+  }
 ]}

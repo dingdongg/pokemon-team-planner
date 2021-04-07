@@ -68,6 +68,10 @@ shorter, so that I will be able to actually play through the game with my pokemo
 - As a user, I want to be able to save my collection of pokemon teams to file
 - As a user, I want to be able to load my collection of pokemon teams from file
 
+##### Phase 4: Task 2
+- I chose to implement the option where I test and design a class in my model package
+- The class I chose was PokemonTeamCollection, and the robust method is called `getTeam()`, 
+which has the ability to throw `TeamNotFoundException`, a checked exception.
 ---
 
 #### Functions I want to implement later in the project

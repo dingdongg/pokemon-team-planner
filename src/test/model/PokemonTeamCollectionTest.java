@@ -1,5 +1,6 @@
 package model;
 
+import model.exceptions.TeamNotFoundException;
 import model.types.PokemonType;
 import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
@@ -199,12 +200,28 @@ public class PokemonTeamCollectionTest {
     }
 
     @Test
-    public void testGetTeam() {
+    public void testGetTeamEmptyCollection() {
+
+        try {
+            testCollection.getTeam(0);
+            fail("Expected TeamNotFoundException");
+        } catch (TeamNotFoundException e) {
+
+            try {
+                testCollection.getTeam(2);
+                fail("Expected TeamNotFoundException");
+            } catch (TeamNotFoundException ee) {
+                // passes
+            }
+        }
+    }
+
+    @Test
+    public void testGetTeamNotEmptyCollection() {
 
         testTeam.addPokemon(testPokemonA);
         testTeam.addPokemon(testPokemonD);
         testTeam.addPokemon(testPokemonF);
-
 
         PokemonTeam teamTwo = new PokemonTeam("second");
         PokemonTeam teamThree = new PokemonTeam("three");
@@ -213,10 +230,17 @@ public class PokemonTeamCollectionTest {
         testCollection.addNewTeam(teamTwo);
         testCollection.addNewTeam(teamThree);
 
-        assertEquals(testTeam, testCollection.getTeam(0));
-        assertEquals(teamTwo, testCollection.getTeam(1));
-        assertEquals(teamThree, testCollection.getTeam(2));
-    }
+        try {
+            PokemonTeam teamOne = testCollection.getTeam(0);
+            PokemonTeam secondTeam = testCollection.getTeam(1);
+            PokemonTeam thirdTeam = testCollection.getTeam(2);
 
+            assertEquals(testTeam, teamOne);
+            assertEquals(teamTwo, secondTeam);
+            assertEquals(teamThree, thirdTeam);
+        } catch (TeamNotFoundException e) {
+            fail("Unexpected TeamNotFoundException");
+        }
+    }
 
 }

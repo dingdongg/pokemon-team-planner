@@ -2,6 +2,7 @@ package persistence;
 
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
+import model.exceptions.TeamNotFoundException;
 import model.types.Types;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,8 +50,12 @@ public class JsonReaderTest extends JsonTest {
             PokemonTeamCollection collection = reader.read();
             ArrayList<PokemonTeam> teams = new ArrayList<>();
 
-            for (int i = 0; i < collection.sizeCollection(); i++) {
-                teams.add(collection.getTeam(i));
+            try {
+                for (int i = 0; i < collection.sizeCollection(); i++) {
+                    teams.add(collection.getTeam(i));
+                }
+            } catch (TeamNotFoundException e) {
+                fail("Unexpected TeamNotFoundException");
             }
             // ensures it correctly loads 3 teams
             assertEquals(3, teams.size());

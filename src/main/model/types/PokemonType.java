@@ -1,6 +1,6 @@
 package model.types;
 
-import model.types.exceptions.TypeNameException;
+import model.exceptions.TypeNameException;
 
 // models the types available in official pokemon games.
 // NOTE: type dynamics (e.g. strong against, weak against)

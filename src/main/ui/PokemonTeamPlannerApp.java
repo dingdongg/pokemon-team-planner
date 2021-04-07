@@ -3,6 +3,7 @@ package ui;
 import model.Pokemon;
 import model.PokemonTeam;
 import model.PokemonTeamCollection;
+import model.exceptions.TeamNotFoundException;
 import model.types.PokemonType;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -175,21 +176,34 @@ public class PokemonTeamPlannerApp {
         }
     }
 
-    // EFFECTS: displays the names of teams currently stored
+    // EFFECTS: displays the names of teams currently stored, or terminates with an
+    //          error message if TeamNotFoundException is caught.
     private void displayAllTeamNames() {
         for (int i = 0; i < this.teamList.sizeCollection(); i++) {
-            System.out.println("\t" + this.teamList.getTeam(i).getTeamName());
+            try {
+                System.out.println("\t" + this.teamList.getTeam(i).getTeamName());
+            } catch (TeamNotFoundException e) {
+                System.out.println("Unexpected TeamNotFoundException.");
+                break;
+            }
         }
     }
 
     // EFFECTS: finds a pokemon team with the given name (next),
-    //          otherwise return null if not found
+    //          otherwise return null if not found, which may be accompanied
+    //          with an error message if TeamNotFoundException was caught.
     private PokemonTeam findTeam(String next) {
 
         for (int i = 0; i < this.teamList.sizeCollection(); i++) {
-            if (this.teamList.getTeam(i).getTeamName().contentEquals(next)) {
-                return this.teamList.getTeam(i);
+            try {
+                if (this.teamList.getTeam(i).getTeamName().contentEquals(next)) {
+                    return this.teamList.getTeam(i);
+                }
+            } catch (TeamNotFoundException e) {
+                System.out.println("Unexpected TeamNotFoundException.");
+                break;
             }
+
         }
         return null;
     }
