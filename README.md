@@ -79,7 +79,7 @@ which has the ability to throw `TeamNotFoundException`, a checked exception.
 
 - ~~Giving feedback on what pokemon types a given team is offensively strong against~~,
   as well as the types the team is defensively weak to
-- ***THE FIRST FEATURE (feedback on offensive strength of team) HAS BEEN IMPLEMENTED AS PART OF PHASE 3.***
+- ***THE FIRST FEATURE (feedback on the offensive strength of team) HAS BEEN IMPLEMENTED AS PART OF PHASE 3.***
   
   
   
