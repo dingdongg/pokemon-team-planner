@@ -1,6 +1,6 @@
 # My CPSC210 Personal Project
 
-## Pokemon Team Planner
+## Pokemon Team Planner 
 
 ***Project background explanation***
 
