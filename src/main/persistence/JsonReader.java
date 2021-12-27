@@ -15,7 +15,6 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 // Represents a reader that reads PokemonTeamCollection from JSON data stored in file
-// code in this class was referenced from JsonSerializationDemo in Phase 2, Task 4 of the personal project
 public class JsonReader {
     private String source;
 
