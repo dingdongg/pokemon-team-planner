@@ -11,12 +11,9 @@ import persistence.JsonWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-// The Pokemon Team Planner app (user interface)
-// CODE REFERENCED: TellerApp class in the Teller project provided
-// CODE REFERENCED: JsonSerializationDemo project example
+// The Pokemon Team Planner app (user interface via command line)
 public class PokemonTeamPlannerApp {
 
-    // first three fields were referenced from JsonSerializationDemo
     private static final String JSON_STORE = "./data/collection.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -80,7 +77,6 @@ public class PokemonTeamPlannerApp {
 
     // MODIFIES: this
     // EFFECTS : loads teamList from file
-    // CODE REFERENCED FROM: JsonSerializationDemo project
     private void loadCollection() {
         try {
             teamList = jsonReader.read();
@@ -91,7 +87,6 @@ public class PokemonTeamPlannerApp {
     }
 
     // EFFECTS: saves teamList to file
-    // CODE REFERENCED FROM: JsonSerializationDemo project
     private void saveCollection() {
         try {
             jsonWriter.open();
