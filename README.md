@@ -30,6 +30,17 @@ shorter, so that I will be able to actually play through the game with my pokemo
 - View the contents of a selected team, showing the pokemons' names and types
 - Save/load team collection to/from JSON file
 
+---
+
+## Installing
+
+1. Clone this repo (preferrably in IntelliJ)
+2. Navigate to main/src/ui/Main class
+3. Right click the Main class and click "Run"
+
+***NOTE: *** There is a GUI rendering issue when the program is run another application that isn't IntelliJ. 
+This is currently being fixed; apologies for any inconveniences caused.
+
 ___
 
 ***Project background explanation***
@@ -65,6 +76,7 @@ ___
 
 ## Updates for the future
 
+- I am fixing a rendering issue that pops up when the program is ran on another application that isn't IntelliJ.
 - I am seeking to refactor the GUI portion of my program, so that the code is more readable and maintainable.
 - I am looking to hook my program up to an API, where I can make requests to fetch various data about pokemon.
 
