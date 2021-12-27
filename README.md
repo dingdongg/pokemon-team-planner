@@ -1,6 +1,4 @@
-# My CPSC210 Personal Project
-
-## Pokemon Team Planner 
+# Pokemon Team Planner
 
 ***Project background explanation***
 
@@ -32,63 +30,44 @@ another pokemon. This process is repeated until one player's whole team faints.
 
 ___
 
-***Project proposal***
+***Project description***
 
-The project I will be designing builds off of this battling idea. 
+The project builds off of this battling idea. 
 It is a program that allows users to build their
-own collection of Pokemon teams. It will allow users to edit, create, and
-store a collection of Pokemon team ideas. In its final stages, this program
-will also take the pokemons' types into consideration and give feedback on the 
-strengths and weaknesses of the team. Hence, it will be a useful tool for anyone 
-looking to plan out Pokemon teams in their playthrough of Pokemon games, for both 
-casual and competitive players alike.
+own collection of Pokemon teams. It allows users to edit, create, and
+store a collection of Pokemon team ideas. This program also takes the pokemons' 
+types into consideration and give feedback on the strengths and weaknesses of the team. 
+Hence, it is a useful tool for anyone looking to plan out teams in their playthrough of 
+Pokemon games, for both casual and competitive players alike.
 
-This project is of interest to me because I loved playing pokemon games as a kid. 
+The inspiration for this project stems from my love for pokemon games.
 Even to this day, I would spend most of my free time replaying these
-same games because to me they are classics. My favorite part with each playthrough
-is the part where I sit down and plan out a whole new pokemon team. This often took
-up a long time because I always wanted my team to be as strong as it can be
+same games because to me, they are classics. My favorite part with each playthrough
+is the part where I sit down and plan out a brand new pokemon team. This often took
+up a long time because I always wanted my team to be as strong as it could be,
 without having too many weaknesses. And because I don't have much spare time in
-university, I never ended up finishing my team and never got to replay the game.
+university, I never ended up finishing my teams and never got to replay the game.
 By creating this program, I am hoping that my team planning process will become a lot
 shorter, so that I will be able to actually play through the game with my pokemon team.
 
 ---
 
-## User stories
+## Features
 
-- As a user, I want to be able to create a new pokemon having a name and 1 or 2 pokemon types
-- As a user, I want to be able to design a pokemon team and add it to my collection of teams
-- As a user, I want to be able to edit existing pokemon teams
-- As a user, I want to be able to delete existing pokemon team(s)
-- As a user, I want to be able to view the contents of a selected team, which will list
-  the contained pokemon's names and their type(s)
-  
-##### User stories (Phase 2)
-- As a user, I want to be able to save my collection of pokemon teams to file
-- As a user, I want to be able to load my collection of pokemon teams from file
-
-##### Phase 4: Task 2
-- I chose to implement the option where I test and design a class in my model package
-- The class I chose was PokemonTeamCollection, and the robust method is called `getTeam()`, 
-which has the ability to throw `TeamNotFoundException`, a checked exception. 
-
-##### Phase 4: Task 3
-**Refactoring I would perform if I had more time:**
-- have one single `PokemonTeamCollection` field in my `PokemonTeamPlannerWindow` class instead
-of having one field each for `AddTeamScreen`, `ViewTeamScreen`, and `PokemonTeamPlannerWindow`.
-- This would reduce the coupling/dependency of the GUI components on `PokemonTeamCollection`, since
-there seems to be lots of arrows directed towards `PokemonTeamCollection`.
+- Create a new pokemon having: a name, and 1/2 pokemon type(s)
+- Design a team of pokemons and add it to a collection of teams
+- Edit/delete existing pokemon team(s)
+- View the contents of a selected team, showing the pokemons' names and types
+- Save/load team collection to/from JSON file
 
 ---
 
-#### Functions I want to implement later in the project
+## Updates for the future
 
-- ~~Giving feedback on what pokemon types a given team is offensively strong against~~,
-  as well as the types the team is defensively weak to
-- ***THE FIRST FEATURE (feedback on the offensive strength of team) HAS BEEN IMPLEMENTED AS PART OF PHASE 3.***
-  
-  
+- I am seeking to refactor the GUI portion of my program, so that the code is more readable and maintainable.
+- I am looking to hook my program up to an API, where I can make requests to fetch various data about pokemon.
+
+---  
   
 ## Credits
 
