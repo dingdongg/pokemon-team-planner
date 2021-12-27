@@ -38,8 +38,8 @@ shorter, so that I will be able to actually play through the game with my pokemo
 2. Navigate to main/src/ui/Main class
 3. Right click the Main class and click "Run"
 
-***NOTE: *** There is a GUI rendering issue when the program is run another application that isn't IntelliJ. 
-This is currently being fixed; apologies for any inconveniences caused.
+***NOTE: There is a GUI rendering issue when the program is run another application that isn't IntelliJ. 
+This is currently being fixed; apologies for any inconveniences caused.***
 
 ___
 
