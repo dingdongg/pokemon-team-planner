@@ -3,10 +3,6 @@ package model.types;
 import model.exceptions.TypeNameException;
 
 // models the types available in official pokemon games.
-// NOTE: type dynamics (e.g. strong against, weak against)
-//       have NOT been implemented as part of P1
-// EDIT: type dynamics have been implemented as part of P3.
-//       this feature is now accessible via the GUI
 public class PokemonType {
 
     private Types type = null;
