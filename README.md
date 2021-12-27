@@ -1,39 +1,9 @@
 # Pokemon Team Planner
 
-***Project background explanation***
-
-Before I delve into my project, I will briefly explain the game franchise
-*Pokemon*, which is what my program works around. My hope is that, by the end 
-of the explanation, the significance of my project will be more obvious.
-
-Pokemon are creatures that are defined by 1 or 2 (but never zero) of the 
-existing 18 types. Some types are stronger, neutral, or weak against other types.
-For instance, fire type is strong against grass type, neutral against electric types,
-but is weak to water types.
-
-Pokemon can also learn up to 4 moves (which are like the "spells" they can cast), 
-which are also defined by a type. For instance, if a fire-type pokemon were struck by 
-another pokemon with a water-type move, it would deal a relatively larger blow to 
-its HP (health points) than when struck by an electric or grass type move.
-
-This type mechanism plays a prevalent role in what are called "Pokemon battles".
-A pokemon battle is (almost always) a 1-on-1 duel between two players.
-Each player gets to bring up to 6 pokemon max (the player's **pokemon team**).
-Each player sends out 1 pokemon at a time, taking turns casting their moves
-on each other until one's HP depletes (ie. a pokemon "faints").
-
-The type mechanism plays a large factor in determining the 
-fate of a battle, since it will determine how much HP points to chunk with
-every move casted, based on the battling pokemons' types. 
-Once a pokemon has fainted, it would be switched out for 
-another pokemon. This process is repeated until one player's whole team faints.
-
-___
 
 ***Project description***
 
-The project builds off of this battling idea. 
-It is a program that allows users to build their
+THis is a program that allows users to build their
 own collection of Pokemon teams. It allows users to edit, create, and
 store a collection of Pokemon team ideas. This program also takes the pokemons' 
 types into consideration and give feedback on the strengths and weaknesses of the team. 
@@ -60,7 +30,38 @@ shorter, so that I will be able to actually play through the game with my pokemo
 - View the contents of a selected team, showing the pokemons' names and types
 - Save/load team collection to/from JSON file
 
----
+___
+
+***Project background explanation***
+
+Here, I will briefly explain the game franchise
+*Pokemon*, which is what my program works around. My hope is that, by the end 
+of the explanation, the significance of my project will be more obvious.
+If you are familiar with the Pokemon franchise, you do not have to read this part.
+
+Pokemon are creatures that are defined by 1 or 2 (but never zero) of the 
+existing 18 types. Some types are stronger, neutral, or weak against other types.
+For instance, fire type is strong against grass type, neutral against electric types,
+but is weak to water types.
+
+Pokemon can also learn up to 4 moves (which are like the "spells" they can cast), 
+which are also defined by a type. For instance, if a fire-type pokemon were struck by 
+another pokemon with a water-type move, it would deal a relatively larger blow to 
+its HP (health points) than when struck by an electric or grass type move.
+
+This type mechanism plays a prevalent role in what are called "Pokemon battles".
+A pokemon battle is (almost always) a 1-on-1 duel between two players.
+Each player gets to bring up to 6 pokemon max (the player's **pokemon team**).
+Each player sends out 1 pokemon at a time, taking turns casting their moves
+on each other until one's HP depletes (ie. a pokemon "faints").
+
+The type mechanism plays a large factor in determining the 
+fate of a battle, since it will determine how much HP points to chunk with
+every move casted, based on the battling pokemons' types. 
+Once a pokemon has fainted, it would be switched out for 
+another pokemon. This process is repeated until one player's whole team faints.
+
+___
 
 ## Updates for the future
 
