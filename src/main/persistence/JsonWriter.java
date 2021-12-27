@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 // Represents a writer that writes JSON representation of PokemonTeamCollection to file
-// code in this class was referenced from JsonSerializationDemo in Phase 2, Task 4 of the personal project
 public class JsonWriter {
 
     private static final int TAB = 4;
