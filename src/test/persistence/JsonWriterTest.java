@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// code in this class was referenced from JsonSerializationDemo in Phase 2, Task 4 of the personal project
 public class JsonWriterTest extends JsonTest {
 
     @BeforeEach
